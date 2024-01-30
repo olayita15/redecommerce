@@ -2,14 +2,12 @@
   <v-carousel
     cycle
     show-arrows="hover"
-    height="300"
+    height="400"
     hide-delimiters
     progress="red">
-    <v-carousel-item
-      v-for="(item,i) in slides"
-      :key="i"
-      :src="item.src"
-      cover></v-carousel-item>
+    <v-carousel-item v-for="(item,i) in slides" :key="i" :src="item.src" cover
+      ><slot :index="i"></slot
+    ></v-carousel-item>
   </v-carousel>
 </template>
 
@@ -18,7 +16,7 @@
 
     const slides = ref([
         {
-            src: 'https://scontent.fbog4-1.fna.fbcdn.net/v/t39.30808-6/331717636_573404524742698_5087273115374914680_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=783fdb&_nc_ohc=-JXTfY0q1f4AX-jE5vi&_nc_ht=scontent.fbog4-1.fna&oh=00_AfBhi8hQP4jhDAn2hW4TilskS33iJs35eToIlaQaDDdHTQ&oe=65B5D183',
+            src: 'https://scontent.fbog4-1.fna.fbcdn.net/v/t39.30808-6/331717636_573404524742698_5087273115374914680_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=783fdb&_nc_eui2=AeG9_zj9kyYFpYHB8Q7p6oe9lw9jKSPV53-XD2MpI9Xnf8DeqYZE2cV8sOHngTozbqk&_nc_ohc=jpEjifDVvG4AX9F0tQk&_nc_ht=scontent.fbog4-1.fna&oh=00_AfByBEwYx6Zf5O5QdFbE7mEzyj76piunuDENUWwQn3HU-w&oe=65BDBA83',
         },
         {
             src: 'https://scontent.fbog4-2.fna.fbcdn.net/v/t31.18172-8/17504266_1603376729690563_4427257886941544040_o.jpg?_nc_cat=103&ccb=1-7&_nc_sid=2be8e3&_nc_ohc=Z70cyt9zXwkAX8lRKvc&_nc_ht=scontent.fbog4-2.fna&oh=00_AfBh9cKWVrIhw-OGo_RvZPUxqf3Ogo00KoalbQkW-W8Heg&oe=65D8192A',
