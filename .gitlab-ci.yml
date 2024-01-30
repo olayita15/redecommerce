@@ -1,0 +1,87 @@
+stages:
+  - update
+  - build
+  - deploy
+  - updateqa
+  - buildqa
+  - deployqa
+
+
+update:
+  stage: update
+  only:
+      - develop
+  tags:
+      - deploy-dev-235
+  script:
+      - if test -d /tmp/front-basic; then rm -fr /tmp/front-basic; fi
+      - cd /tmp
+      - git clone https://$user_dev:$token_dev@gitlab.infometrika.net/argo-msa/front-basic.git
+      - cd front-basic
+      - git checkout develop
+
+build:
+  stage: build
+  only:
+      - develop
+  tags:
+      - deploy-dev-235
+  script:
+      - docker login registry.infometrika.net -u $user_dev -p $token_dev
+      - docker build -t registry.infometrika.net/argo-msa/front-basic:dev /tmp/front-basic/
+      - docker push registry.infometrika.net/argo-msa/front-basic:dev
+
+deploy:
+  stage: deploy
+  only:
+      - develop
+  tags:
+      - deploy-dev-235
+  script:
+      - cd /opt/ArgoMsa
+      - docker login registry.infometrika.net -u $user_dev -p $token_dev
+      - docker compose rm -fs front_app
+      - docker compose up -d --build --force-recreate front_app
+
+#STAGES PARA RAMA QA
+
+updateqa:
+  stage: updateqa
+  tags:
+    #  - deploy-QA-236
+      - deploy-qa-94
+  only:
+      - QA
+  script:
+      - cd /tmp
+      - if test -d /tmp/front-basic; then rm -rf /tmp/front-basic; fi
+      - git clone https://$user_dev:$token_dev@gitlab.infometrika.net/argo-msa/front-basic.git
+      - cd front-basic && git checkout QA
+
+buildqa:
+  stage: buildqa
+  tags:
+     # - deploy-QA-236
+      - deploy-qa-94
+  only:
+      - QA
+  script:
+      - docker login registry.infometrika.net -u $user_dev -p $token_dev
+      - docker build -t registry.infometrika.net/argo-msa/front-basic:tumaqa /tmp/front-basic
+      - docker push registry.infometrika.net/argo-msa/front-basic:tumaqa
+      
+
+deployqa:
+  stage: deployqa
+  tags:
+      #- deploy-QA-236
+      - deploy-qa-94
+  only:
+      - QA
+  script:     
+      - cd /opt/ArgoMsa     
+      - ls
+      - docker compose rm -fs front_app
+      - docker system prune -af
+      - docker login registry.infometrika.net -u $user_dev -p $token_dev
+      - docker compose up -d --build --force-recreate front_app
