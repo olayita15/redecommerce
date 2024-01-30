@@ -1,15 +1,28 @@
 <template>
   <div class="first-page">
-    <principal-carrousel />
+    <principal-carrousel>
+      <template #default="{ index }" v-if="index === 0">
+        <div>Contenido para el primer slide</div>
+      </template>
+
+      <!-- Contenido personalizado para el segundo slide -->
+      <template #default="{ index }" v-else-if="index === 1">
+        <div>Contenido para el segundo slide</div>
+      </template>
+
+      <!-- Contenido personalizado para otros slides -->
+      <template #default="{ index }" v-else>
+        <div>Contenido para otros slides</div>
+      </template>
+    </principal-carrousel>
     <div class="d-flex flex-column justify-center align-center my-10">
       <div class="d-flex flex-column justify-xl-space-evenly align-center">
         <div class="my-5"><h1>Artículos más vendidos</h1></div>
         <span class="my-5">Explora nuestros artículos más populares</span>
         <v-btn class="my-5" rounded="lg" size="x-large">Ver Todo</v-btn>
       </div>
-      <div class="d-flex flex-row justify-space-evenly align-center flex-wrap">
+      <div class="cards-box ma-5">
         <div
-          class="mx-10"
           v-for="(data, index) in genericCardDataArray"
           :key="index">
           <generic-card :genericCardData="data" />
@@ -50,7 +63,7 @@
       price: 3999,
       description: 'Mantente abrigado y con estilo con esta acogedora sudadera que promueve la unidad de los trabajadores.',
       availability: ['Teoría & Praxis'],
-      image: 'https://lh3.googleusercontent.com/proxy/JasIg0veC-4zpIeKNFhP3hKSHNWyJCLweqCe4lV4aF5p3zNnnRJQP1u2rTeta-Ogq8W0a1F75Wj0H8MBR-taWfPj0XRclzZYyTH7L0rhwSvRfjONYcaIYdJEoAllMwiqqARo8G9QqhY_Pzmayvoa',
+      image: "https://www.progresando.com/wp-content/uploads/2023/06/KesaneMX-Manifiesto-comunista-El-Karl-Marx-Engeles-GL-EMU.fw_.png",
       category: 'libro',
       logo: 'https://semanariovoz.com/wp-content/uploads/2015/04/09/teopraxisplano21.gif'
     },
@@ -71,10 +84,13 @@
     // Añade más objetos de datos para más tarjetas
     // ...
   ]);
-
-  
 </script>
 
 <style lang="scss" scoped>
-
+.cards-box{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  align-items: flex-start;
+}
 </style>

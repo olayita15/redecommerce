@@ -7,6 +7,7 @@ import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 
 const path = require("path");
 export default defineConfig({
+  base: 'https://olayita15.github.io/redecommerce/',
   plugins: [
     vue({ 
       template: { transformAssetUrls }
@@ -29,7 +30,7 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: '../dist'
+    outDir: '/usr/src/app/my-app/dist',
   },
   css: {
     preprocessorOptions: {

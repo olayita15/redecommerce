@@ -4,12 +4,12 @@ import inicioRouter from "../modules/inicio/router";
 
 const routes = [
   {
-    path: '',
+    path: '/redecommerce/',
     name: 'dashboard-admin',
     component: () => import('@/layouts/mainLayout.vue'),
     children: [
       {
-        path: '',
+        path: '/redecommerce/',
         ...inicioRouter
       },
     ]
