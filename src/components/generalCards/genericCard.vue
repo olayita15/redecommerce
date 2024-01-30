@@ -19,14 +19,9 @@
             height="4"
             indeterminate></v-progress-linear>
         </template>
-        <v-card-item class="max-width">
-          <v-img
-            :src="genericCardData.logo || 'https://cdn.vuetifyjs.com/images/cards/cooking.png'"
-            alt="logo"
-            class="card-logo ">
-          </v-img>
+        <v-card-item >
           <v-card-title
-            ><div class="title-text">
+          class="max-width"><div class="title-text">
               <span>{{ genericCardData.title || 'Default Title' }}</span>
             </div>
           </v-card-title>
@@ -43,7 +38,7 @@
           </v-card-subtitle>
         </v-card-item>
 
-        <v-card-text>
+        <v-card-text class="my-1">
           <v-row align="center" class="mx-0">
             <v-rating
               :model-value="genericCardData.rating || 4.5"
@@ -85,15 +80,17 @@
         </v-chip-group>
       </div> -->
 
-        <v-card-actions>
-          <div>
+        <v-card-actions class="actions-box">
             <v-btn
               color="deep-purple-lighten-2"
               variant="text"
               @click="reserve">
               Ver más
             </v-btn>
-          </div>
+            <img
+            :src="genericCardData.logo || 'https://cdn.vuetifyjs.com/images/cards/cooking.png'"
+            alt="logo"
+            class="card-logo " />
         </v-card-actions>
       </v-card>
     </div>
@@ -148,20 +145,31 @@
   }
 
     .max-width{
-      max-width: 250px;
+      max-width: 255px;
     }
 
     .image{
       image-rendering: optimizeSpeed;
       position: absolute;
-      margin-left: 225px;
+      margin-left: 235px;
+      margin-top: -55px;
       z-index: 5;
     }
     .card-box{
+      display: flex;
+      flex-flow: column nowrap;
       border-radius: 25px;
       margin: 0 250px;
       .card-logo {
         width: 65px;
+      }
+
+      .actions-box{
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        justify-content: space-evenly;
+        width: 100%;
       }
     }
 
@@ -183,9 +191,9 @@
     }
 
     .title-text{
-      max-width: 300px;
       text-wrap: wrap;
       word-wrap:break-word;
       font-family: 'Roboto', sans-serif;
+      font-size:x-large;
     }
 </style>
