@@ -1,12 +1,17 @@
 // _variables.scss
-$title-font-regular: Headliner;
-$principal-font-regular: Futura;
+$title-font-regular: Headliner, Soviet, Georgia;
+$title-font-secondary: Soviet, Georgia;
+$principal-font-regular: Futura, Soviet, Georgia;
 $autor-font-regular: Historia;
 // $primary-font: 'Georgia';
 
 // global.scss
 .primary-title-font {
   font-family: $title-font-regular;
+}
+
+.secondary-title-font {
+  font-family: $title-font-secondary;
 }
 
 .primary-font {
@@ -42,3 +47,14 @@ $autor-font-regular: Historia;
   src: local("Roboto"),
     url("@/assets/fonts/thehistoriademo.ttf") format("truetype");
 }
+
+// MOVIL FONTS
+@font-face {
+  font-family: "Soviet";
+  font-style: normal;
+  font-display: auto;
+  unicode-range: U+000-5FF;
+  src: local("Roboto"),
+    url("@/assets/fonts/soviet.ttf") format("truetype");
+}
+

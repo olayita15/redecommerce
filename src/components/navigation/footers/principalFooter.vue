@@ -10,7 +10,7 @@
           variant="text"></v-btn>
       </div>
 
-      <div class="pt-0">
+      <div class="pt-0 primary-font">
         La juventud comunista colombiana es una organización juvenil de carácter
         político, democrática, revolucionaria y antiimperialista, que lucha por
         la unidad de los jóvenes, por la defensa de sus derechos, por la paz con
@@ -28,7 +28,7 @@
 
       <v-divider></v-divider>
 
-      <div>
+      <div class="primary-font">
         {{ new Date().getFullYear() }} —
         <strong>Juventud Comunista Colombiana</strong>
       </div>

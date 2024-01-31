@@ -1,11 +1,11 @@
 <template>
   <div class="w-100">
     <header class="header-desing header-box py-3">
-      <div class="logo primary-font">
+      <div class="logo secondary-title-font">
         <span>TIENDA ROJA</span>
       </div>
       <div>
-        <ul class="main-nav primary-font">
+        <ul class="main-nav secondary-title-font">
           <li><a href="#">Ropa</a></li>
           <li><a href="#">Libros</a></li>
           <li><a href="#">Accesorios</a></li>
@@ -158,9 +158,16 @@
 @media (max-width: 1050px) {
   .header-box{
     flex-flow: column wrap;
+    justify-content: center;
+
+    .logo{
+      text-align: center;
+    }
 
     ul {
-      flex-flow: row wrap;
+      flex-flow: column wrap;
+    justify-content: center;
+
     }
     .cart-list{
       display: none;

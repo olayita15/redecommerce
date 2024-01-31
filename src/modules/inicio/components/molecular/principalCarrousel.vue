@@ -66,9 +66,14 @@
   }
 
   @media (max-width: 700px) {
-    
+    .carousel-box{
+      align-items: center;
+      background-size:cover;
+      background-position:bottom;
+    }
+
     .circular-box {
-    width: 250px; /* Ancho del círculo */
+    width: 300px; /* Ancho del círculo */
     height: 100px; /* Altura del círculo */
   }
 
