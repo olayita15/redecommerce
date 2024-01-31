@@ -7,7 +7,7 @@
         <span class="my-5">Explora nuestros artículos más populares</span>
         <v-btn class="my-5" rounded="lg" size="x-large">Ver Todo</v-btn>
       </div>
-      <div class="cards-box ma-5">
+      <div class="cards-box">
         <div
           v-for="(data, index) in genericCardDataArray"
           :key="index">
@@ -78,5 +78,6 @@
   flex-flow: row wrap;
   justify-content: space-evenly;
   align-items: flex-start;
+  max-width: 600px;
 }
 </style>

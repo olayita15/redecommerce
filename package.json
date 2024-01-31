@@ -8,7 +8,7 @@
     "dev": "vite preview",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore --fix src",
     "predeploy": "npm run build",
-    "deploy": "npx gh-pages -d dist --repo https://olayita15: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@github.com/olayita15/redecommerce.git"
+    "deploy": "npx gh-pages -d dist --repo https://olayita15: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@github.com/olayita15/redecommerce.git"
   },
   "dependencies": {
     "@turf/turf": "^6.5.0",
