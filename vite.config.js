@@ -4,8 +4,8 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 
-
 const path = require("path");
+
 export default defineConfig({
   base: 'https://olayita15.github.io/redecommerce/',
   plugins: [
@@ -18,28 +18,22 @@ export default defineConfig({
     }),
   ],
   server: {
-    port: 6060,  
-  },
-  preview: {
     port: 6060,
   },
-  define: { 'process.env': {} },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  define: { 'process.env': {} },
   build: {
     outDir: '/usr/src/app/my-app/dist',
   },
   css: {
     preprocessorOptions: {
-      sass: {
-        additionalData: `@import "@/assets/sass/_variables.sass"
-@import "@/assets/sass/global.sass"
-
-`
-      }
+      scss: {
+        additionalData: `@import "@/assets/scss/_variables.scss";`,
+      },
     },
-},
-});
+  },
+})

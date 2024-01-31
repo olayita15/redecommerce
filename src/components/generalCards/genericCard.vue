@@ -21,14 +21,14 @@
         </template>
         <v-card-item >
           <v-card-title
-          class="max-width"><div class="title-text">
+          class="max-width"><div class="title-text primary-title-font">
               <span>{{ genericCardData.title || 'Default Title' }}</span>
             </div>
           </v-card-title>
 
           <v-card-subtitle class="max-width">
             <span
-              class="me-1"
+              class="me-1 primary-font"
               >{{ genericCardData.subtitle || 'Default Subtitle' }}</span
             >
             <v-icon
@@ -55,12 +55,12 @@
           </v-row>
 
           <div
-            class="mt-5 max-width"
+            class="mt-5 max-width primary-font"
             style="height: 50px;"
             >{{ genericCardData.description || 'Default Description' }}</div
           >
           <div class="mt-4 text-subtitle-1"
-            ><span class="product-price mt-5">
+            ><span class="product-price mt-5 primary-font">
               COP<b>{{ formatPrice(genericCardData.price) || '' }}</b>
             </span></div
           >
@@ -183,7 +183,6 @@
       color: #fff;
       border-radius: 7px;
       box-shadow: -10px 20px 15px -10px rgba(17, 233, 91, 0.3);
-      font-family: 'Roboto', sans-serif;
     }
 
     .product-price b {
@@ -193,7 +192,7 @@
     .title-text{
       text-wrap: wrap;
       word-wrap:break-word;
-      font-family: 'Roboto', sans-serif;
-      font-size:x-large;
+      font-size: 30px;
+      margin: 10px 0;
     }
 </style>
