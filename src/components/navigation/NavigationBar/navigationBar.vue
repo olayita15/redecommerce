@@ -1,14 +1,14 @@
 <template>
   <div>
     <header class="header">
-      <h1 class="logo"><a href="#">TIENDA ROJA</a></h1>
-      <ul class="main-nav">
+      <h1 class="logo primary-font"><span href="#">TIENDA ROJA</span></h1>
+      <ul class="main-nav primary-font">
         <li><a href="#">Ropa</a></li>
         <li><a href="#">Libros</a></li>
         <li><a href="#">Accesorios</a></li>
         <li><a href="#">Varios</a></li>
         <li
-          ><div class="search-box">
+          ><div class="search-box primary-font">
             <v-text-field
               clearable
               label="Búsqueda"
@@ -57,19 +57,18 @@
 
   .logo {
   	margin: 0;
-  	font-size: 1.45em;
+    margin-left: 10px;
+  	font-size: 2cm;
   }
 
   .main-nav {
   	margin-top: 5px;
-
+    font-size:xx-large;
   }
   .logo a,
   .main-nav a {
   	padding: 10px 15px;
-  	text-transform: uppercase;
   	text-align: center;
-  	display: block;
   }
 
   .search-box{
