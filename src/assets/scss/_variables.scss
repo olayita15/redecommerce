@@ -1,6 +1,7 @@
 // _variables.scss
 $title-font-regular: Headliner;
 $principal-font-regular: Futura;
+$autor-font-regular: Historia;
 // $primary-font: 'Georgia';
 
 // global.scss
@@ -12,13 +13,16 @@ $principal-font-regular: Futura;
   font-family: $principal-font-regular;
 }
 
+.autor-font-regular{
+  font-family: $autor-font-regular;
+}
+
 @font-face {
   font-family: "Headliner";
   font-style: normal;
   font-display: auto;
   unicode-range: U+000-5FF;
-  src: local("Roboto"), url("@/assets/fonts/Headliner.woff2") format("woff2"),
-    url("@/assets/fonts/Roboto/Roboto-Regular.woff") format("woff");
+  src: local("Roboto"), url("@/assets/fonts/Headliner.woff2") format("woff2")
 }
 
 @font-face {
@@ -28,4 +32,13 @@ $principal-font-regular: Futura;
   unicode-range: U+000-5FF;
   src: local("Roboto"),
     url("@/assets/fonts/FuturaRegular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Historia";
+  font-style: normal;
+  font-display: auto;
+  unicode-range: U+000-5FF;
+  src: local("Roboto"),
+    url("@/assets/fonts/thehistoriademo.ttf") format("truetype");
 }

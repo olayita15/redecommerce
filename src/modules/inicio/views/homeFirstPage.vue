@@ -16,7 +16,7 @@
       </template>
     </principal-carrousel>
     <div class="d-flex flex-column justify-center align-center my-10">
-      <div class="d-flex flex-column justify-xl-space-evenly align-center">
+      <div class="d-flex flex-column justify-xl-space-evenly align-center mb-5">
         <div class="my-5"><h1>Artículos más vendidos</h1></div>
         <span class="my-5">Explora nuestros artículos más populares</span>
         <v-btn class="my-5" rounded="lg" size="x-large">Ver Todo</v-btn>
@@ -41,7 +41,7 @@
         const genericCardDataArray = ref([
     {
       title: 'Camiseta Revolución Comunista',
-      subtitle: 'Favorito de la Localidad',
+      author: 'Ernesto Ché Guevara',
       iconColor: 'red',
       icon: 'mdi-fire-circle',
       rating: 4.5,
@@ -55,12 +55,12 @@
     },
     {
       title: 'Discusiones marxistas para la revolución en Colombia',
-      subtitle: 'Juan Sebastián Cristancho Rojas',
+      author: 'Juan Sebastián Cristancho Rojas',
       iconColor: 'red',
       icon: 'mdi-fire-circle',
       rating: 4.7,
       reviews: 200,
-      price: 3999,
+      price: 29999,
       description: 'Mantente abrigado y con estilo con esta acogedora sudadera que promueve la unidad de los trabajadores.',
       availability: ['Teoría & Praxis'],
       image: "https://www.progresando.com/wp-content/uploads/2023/06/KesaneMX-Manifiesto-comunista-El-Karl-Marx-Engeles-GL-EMU.fw_.png",
@@ -69,12 +69,12 @@
     },
     {
       title: 'Mochila Símbolo de Igualdad',
-      subtitle: 'Lleva el Mensaje a Todas Partes',
+      author: 'La panadería Rusa',
       iconColor: 'red',
       icon: 'mdi-fire-circle',
       rating: 4.5,
       reviews: 180,
-      price: 4999,
+      price: 49999,
       description: 'Difunde el mensaje de igualdad y solidaridad con esta versátil mochila.',
       availability: ['Rojo','Negro'],
       image: 'https://images.creativefabrica.com/products/thumbnails/2023/09/04/tYvYxGtKe/2Uv67oT2m9vDEgyUCWGHyZy4kLZ.png',

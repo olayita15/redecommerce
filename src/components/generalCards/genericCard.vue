@@ -11,7 +11,7 @@
         :loading="loading"
         class="mx-auto card-box elevation-5 my-6"
         width="374"
-        height="400">
+        height="380">
         <template v-slot:loader="{ isActive }">
           <v-progress-linear
             :active="isActive"
@@ -26,10 +26,11 @@
             </div>
           </v-card-title>
 
-          <v-card-subtitle class="max-width">
+          <v-card-subtitle class="max-width ma-1">
             <span
-              class="me-1 primary-font"
-              >{{ genericCardData.subtitle || 'Default Subtitle' }}</span
+              class="me-1 autor-font-regular"
+              style="font-size: large;"
+              >{{ genericCardData.author || 'Default Subtitle' }}</span
             >
             <v-icon
               :color="genericCardData.iconColor || 'error'"
@@ -59,7 +60,7 @@
             style="height: 50px;"
             >{{ genericCardData.description || 'Default Description' }}</div
           >
-          <div class="mt-4 text-subtitle-1"
+          <div class="mt-4 text-subtitle-1 primary-font"
             ><span class="product-price mt-5 primary-font">
               COP<b>{{ formatPrice(genericCardData.price) || '' }}</b>
             </span></div
@@ -80,7 +81,7 @@
         </v-chip-group>
       </div> -->
 
-        <v-card-actions class="actions-box">
+        <v-card-actions class="actions-box primary-font">
             <v-btn
               color="deep-purple-lighten-2"
               variant="text"
