@@ -1,8 +1,7 @@
 <template>
-  <div class="d-flex flex-column justify-center w-100 h-100 carousel-box">
+  <div class="d-flex flex-column justify-center  carousel-box">
     <v-carousel
       cycle
-      height="400"
       hide-delimiters
       progress="red"
       class="circular-box">
@@ -41,10 +40,11 @@
   background-image: url('https://scontent.fbog4-1.fna.fbcdn.net/v/t39.30808-6/331717636_573404524742698_5087273115374914680_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=783fdb&_nc_eui2=AeG9_zj9kyYFpYHB8Q7p6oe9lw9jKSPV53-XD2MpI9Xnf8DeqYZE2cV8sOHngTozbqk&_nc_ohc=jpEjifDVvG4AX9F0tQk&_nc_ht=scontent.fbog4-1.fna&oh=00_AfAzqLuh8740FyFJJ9CLO9YekxNV7qkCPMZemq9fm1Rwdg&oe=65BFB4C3');
   background-size:cover;
   background-position: center;
+  min-height: 350px;
 }
   .circular-box {
-    width: 400px; /* Ancho del círculo */
-    height: 300px; /* Altura del círculo */
+    width: 300px; /* Ancho del círculo */
+    max-height: 300px; /* Altura del círculo */
     border-radius: 50%; /* Hace que el div sea circular */
     border: 5px solid #0e0e0e; /* Borde del círculo */
     overflow: hidden; /* Oculta el contenido que se sale del círculo */
@@ -60,8 +60,17 @@
   .circular-box img.circular-image {
     width: 100%; /* Ajusta la imagen al 100% del contenedor */
     height: 100%; /* Ajusta la altura al 100% del contenedor */
-    object-fit: cover; /* Ajusta la imagen para cubrir completamente el contenedor */
+    object-fit:contain; /* Ajusta la imagen para cubrir completamente el contenedor */
     border-radius: 50%; /* Garantiza que la imagen sea circular */
     z-index: 10;
+  }
+
+  @media (max-width: 700px) {
+    
+    .circular-box {
+    width: 250px; /* Ancho del círculo */
+    height: 100px; /* Altura del círculo */
+  }
+
   }
 </style>

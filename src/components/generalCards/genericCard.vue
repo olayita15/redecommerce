@@ -1,7 +1,7 @@
 <!-- GenericCard.vue -->
 
 <template>
-  <v-container class="card-box-container w-100 mx-10">
+  <v-container class="card-box-container">
     <img
       class="image"
       :src="genericCardData.image || 'https://cdn.vuetifyjs.com/images/cards/cooking.png'" />
@@ -137,6 +137,7 @@
 
 <style lang="scss" scoped>
   .card-box-container{
+    max-width: fit-content;
     margin: 0 20px;
   }
 
@@ -215,7 +216,7 @@
   }
 
     // Media query para pantallas menores a 700px
-  @media (max-width: 800px) {
+  @media (max-width: 900px) {
     .card-box {
       width: 274px;
       height: 580px;
@@ -230,7 +231,7 @@
       display: none; // Cambiar el margen izquierdo a 0 o el valor que desees
     }
     .image-movil{
-    display: block;
+      display: block;
     }
 
     .max-width{
