@@ -1,17 +1,12 @@
 <!-- GenericCard.vue -->
 
 <template>
-  <div class="card-box-container">
+  <v-container class="card-box-container w-100 mx-10">
     <img
       class="image"
-      width="300"
       :src="genericCardData.image || 'https://cdn.vuetifyjs.com/images/cards/cooking.png'" />
     <div>
-      <v-card
-        :loading="loading"
-        class="mx-auto card-box elevation-5 my-6"
-        width="374"
-        height="380">
+      <v-card :loading="loading" class="mx-auto card-box elevation-5 my-6">
         <template v-slot:loader="{ isActive }">
           <v-progress-linear
             :active="isActive"
@@ -19,9 +14,12 @@
             height="4"
             indeterminate></v-progress-linear>
         </template>
-        <v-card-item >
-          <v-card-title
-          class="max-width"><div class="title-text primary-title-font">
+        <v-card-item>
+          <img
+      class="image-movil"
+      :src="genericCardData.image || 'https://cdn.vuetifyjs.com/images/cards/cooking.png'" />
+          <v-card-title class="max-width"
+            ><div class="title-text primary-title-font">
               <span>{{ genericCardData.title || 'Default Title' }}</span>
             </div>
           </v-card-title>
@@ -82,20 +80,17 @@
       </div> -->
 
         <v-card-actions class="actions-box primary-font">
-            <v-btn
-              color="deep-purple-lighten-2"
-              variant="text"
-              @click="reserve">
-              Ver más
-            </v-btn>
-            <img
+          <v-btn color="deep-purple-lighten-2" variant="text" @click="reserve">
+            Ver más
+          </v-btn>
+          <img
             :src="genericCardData.logo || 'https://cdn.vuetifyjs.com/images/cards/cooking.png'"
             alt="logo"
             class="card-logo " />
         </v-card-actions>
       </v-card>
     </div>
-  </div>
+  </v-container>
 </template>
 
 <script setup>
@@ -150,13 +145,24 @@
     }
 
     .image{
+      width: 300px;
       image-rendering: optimizeSpeed;
       position: absolute;
       margin-left: 235px;
       margin-top: -55px;
       z-index: 5;
     }
+
+    .image-movil{
+      display: none;
+      width: 200px;
+      image-rendering: optimizeSpeed;
+      z-index: 5;
+    }
     .card-box{
+      width: 374px;
+      height: 380px;
+
       display: flex;
       flex-flow: column nowrap;
       border-radius: 25px;
@@ -196,4 +202,39 @@
       font-size: 30px;
       margin: 10px 0;
     }
+
+    @media (max-width: 1288px) {
+    .card-box {
+
+    }
+
+    .image {
+      width: 250px;
+    }
+
+  }
+
+    // Media query para pantallas menores a 700px
+  @media (max-width: 800px) {
+    .card-box {
+      width: 274px;
+      height: 580px;
+      margin: 0; // Cambiar el margen a 0 o el valor que desees
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .image {
+      display: none; // Cambiar el margen izquierdo a 0 o el valor que desees
+    }
+    .image-movil{
+    display: block;
+    }
+
+    .max-width{
+      max-width: 330px;
+    }
+  }
 </style>

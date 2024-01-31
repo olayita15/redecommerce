@@ -115,11 +115,12 @@
 
 
 
-  @media (min-width: 769px) {
+  @media (min-width: 900px) {
   	.header,
   	.main-nav {
   		display: flex;
-        align-items: center;
+      align-items: center;
+      justify-content: center;
   	}
   	.header {
   		flex-direction: column;
