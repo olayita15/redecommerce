@@ -1,20 +1,6 @@
 <template>
   <div class="first-page">
-    <principal-carrousel>
-      <template #default="{ index }" v-if="index === 0">
-        <div>Contenido para el primer slide</div>
-      </template>
-
-      <!-- Contenido personalizado para el segundo slide -->
-      <template #default="{ index }" v-else-if="index === 1">
-        <div>Contenido para el segundo slide</div>
-      </template>
-
-      <!-- Contenido personalizado para otros slides -->
-      <template #default="{ index }" v-else>
-        <div>Contenido para otros slides</div>
-      </template>
-    </principal-carrousel>
+    <principal-carrousel />
     <div class="d-flex flex-column justify-center align-center my-10">
       <div class="d-flex flex-column justify-xl-space-evenly align-center mb-5">
         <div class="my-5"><h1>Artículos más vendidos</h1></div>
