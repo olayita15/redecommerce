@@ -1,12 +1,12 @@
 <template>
   <v-app>
-    <router-view />
+    <div class="h-100 w-100 ma-0 pa-0 container">
+      <router-view />
+    </div>
   </v-app>
 </template>
 
-<script setup>
-  
-</script>
+<script setup></script>
 
 <style lang="scss">
 
