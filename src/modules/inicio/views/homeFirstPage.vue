@@ -1,11 +1,11 @@
 <template>
   <div class="first-page">
-    <principal-carrousel />
+    <principal-carrousel class="w-100" />
     <div class="d-flex flex-column justify-center align-center my-10">
-      <div class="d-flex flex-column justify-xl-space-evenly align-center mb-5">
-        <div class="my-5"><h1>Artículos más vendidos</h1></div>
-        <span class="my-5">Explora nuestros artículos más populares</span>
-        <v-btn class="my-5" rounded="lg" size="x-large">Ver Todo</v-btn>
+      <div class="d-flex flex-column justify-xl-space-evenly align-center mb-10">
+        <div class="my-5 primary-font"><h1>Artículos más vendidos</h1></div>
+        <span class="my-5 primary-font">Explora nuestros artículos más populares</span>
+        <v-btn class="my-5 primary-font" rounded="lg" size="x-large">Ver Todo</v-btn>
       </div>
       <div class="cards-box">
         <div
@@ -78,6 +78,24 @@
   flex-flow: row wrap;
   justify-content: space-evenly;
   align-items: flex-start;
+  max-width: 80%;
+}
+
+@media (max-width: 900px) {
+  .first-page{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .cards-box{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  align-items: flex-start;
   max-width: 600px;
+}
+
 }
 </style>

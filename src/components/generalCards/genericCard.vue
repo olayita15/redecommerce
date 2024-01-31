@@ -138,18 +138,18 @@
 <style lang="scss" scoped>
   .card-box-container{
     max-width: fit-content;
-    margin: 0 20px;
+    margin: 0 50px;
   }
 
     .max-width{
-      max-width: 255px;
+      max-width: 235px;
     }
 
     .image{
       width: 300px;
       image-rendering: optimizeSpeed;
       position: absolute;
-      margin-left: 235px;
+      margin-left: 205px;
       margin-top: -55px;
       z-index: 5;
     }
@@ -161,8 +161,8 @@
       z-index: 5;
     }
     .card-box{
-      width: 374px;
-      height: 380px;
+      width: 300px;
+      height: 400px;
 
       display: flex;
       flex-flow: column nowrap;
@@ -219,7 +219,7 @@
   @media (max-width: 900px) {
     .card-box {
       width: 274px;
-      height: 580px;
+      height: 680px;
       margin: 0; // Cambiar el margen a 0 o el valor que desees
       display: flex;
       flex-flow: column nowrap;
