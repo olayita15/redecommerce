@@ -1,1 +1,0 @@
-import{a3 as r,ah as s,ae as c,a6 as a,a4 as n,d as e}from"./index.20dc6a1b.js";import{V as o}from"./VContainer.f694347c.js";const _={};function i(f,l){const t=s("router-view");return n(),c(o,{fluid:"",class:"pa-0 ma-0","grid-list-xs":""},{default:a(()=>[e(o,{fluid:"",class:"pa-0 ma-0"},{default:a(()=>[e(t)]),_:1})]),_:1})}var u=r(_,[["render",i]]);export{u as default};
