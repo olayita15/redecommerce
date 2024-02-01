@@ -1,17 +1,18 @@
 <template>
   <div class="first-page">
-    <principal-carrousel class="w-100" />
+    <principal-carrousel />
     <div class="d-flex flex-column justify-center align-center my-10">
       <div class="d-flex flex-column justify-xl-space-evenly align-center mb-10">
         <div class="my-5 primary-font"><h1>Artículos más vendidos</h1></div>
         <span class="my-5 primary-font">Explora nuestros artículos más populares</span>
         <v-btn class="my-5 primary-font" rounded="lg" size="x-large">Ver Todo</v-btn>
       </div>
-      <div class="cards-box">
+      <div class="cards-box d-flex flex-row flex-wrap justify-space-around align-center">
         <div
           v-for="(data, index) in genericCardDataArray"
           :key="index">
-          <generic-card :genericCardData="data" />
+          <generic-card class="generic-desktop-card" :genericCardData="data" />
+          <genericMobileCard class="generic-mobile-card" :genericCardData="data" />
         </div>
       </div>
     </div>
@@ -23,6 +24,8 @@
 
         import principalCarrousel from '../components/molecular/principalCarrousel.vue';
         import genericCard from '../../../components/generalCards/genericCard.vue';
+        import genericMobileCard from '../../../components/generalCards/genericMobileCard.vue';
+
 
         const genericCardDataArray = ref([
     {
@@ -73,29 +76,26 @@
 </script>
 
 <style lang="scss" scoped>
-.cards-box{
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-evenly;
-  align-items: flex-start;
-  max-width: 80%;
-}
-
-@media (max-width: 900px) {
-  .first-page{
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-items: center;
+  .generic-mobile-card{
+    display: none;
+  }
+  .cards-box{
+    max-width: 90%;
   }
 
-  .cards-box{
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-evenly;
-  align-items: flex-start;
-  max-width: 600px;
-}
+  @media (max-width: 900px) {
+    .generic-desktop-card{
+      display: none;
+    }
+    .generic-mobile-card{
+    display: block;
+  }
+    .first-page{
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: center;
+      align-items: center;
+    }
 
-}
+  }
 </style>

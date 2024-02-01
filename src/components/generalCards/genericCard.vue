@@ -1,8 +1,6 @@
-<!-- GenericCard.vue -->
-
 <template>
   <v-container class="card-box-container">
-    <img
+    <v-img
       class="image"
       :src="genericCardData.image || 'https://cdn.vuetifyjs.com/images/cards/cooking.png'" />
     <div>
@@ -15,54 +13,36 @@
             indeterminate></v-progress-linear>
         </template>
         <v-card-item>
-          <img
-      class="image-movil"
-      :src="genericCardData.image || 'https://cdn.vuetifyjs.com/images/cards/cooking.png'" />
-          <v-card-title class="max-width"
-            ><div class="title-text primary-title-font">
-              <span>{{ genericCardData.title || 'Default Title' }}</span>
-            </div>
-          </v-card-title>
+          <div class="card-item-box">
+            <v-card-title class="max-width"
+              ><div class="title-text primary-title-font">
+                <span class="break-word" >{{ genericCardData.title || 'Default Title' }}</span>
+              </div>
+            </v-card-title>
 
-          <v-card-subtitle class="max-width ma-1">
-            <span
-              class="me-1 autor-font-regular"
-              style="font-size: large;"
-              >{{ genericCardData.author || 'Default Subtitle' }}</span
-            >
-            <v-icon
-              :color="genericCardData.iconColor || 'error'"
-              :icon="genericCardData.icon || 'mdi-fire-circle'"
-              size="small"></v-icon>
-          </v-card-subtitle>
+            <v-card-subtitle class="max-width ma-1">
+              <span
+                class="me-1 autor-font-regular"
+                style="font-size: large;"
+                >{{ genericCardData.author || 'Default Subtitle' }}</span
+              >
+              <v-icon
+                :color="genericCardData.iconColor || 'error'"
+                :icon="genericCardData.icon || 'mdi-fire-circle'"
+                size="small"></v-icon>
+            </v-card-subtitle>
+          </div>
         </v-card-item>
 
-        <v-card-text class="my-1">
-          <v-row align="center" class="mx-0">
-            <v-rating
-              :model-value="genericCardData.rating || 4.5"
-              color="amber"
-              density="compact"
-              half-increments
-              readonly
-              size="small"></v-rating>
+        <v-card-text class="card-text-box">
 
-            <div
-              class="text-grey ms-4"
-              >{{ `${genericCardData.rating || 4.5} (${genericCardData.reviews || 0})` }}</div
-            >
-          </v-row>
-
-          <div
-            class="mt-5 max-width primary-font"
-            style="height: 50px;"
-            >{{ genericCardData.description || 'Default Description' }}</div
-          >
-          <div class="mt-4 text-subtitle-1 primary-font"
+          <div class="product-price-box mt-4 text-subtitle-1 primary-font"
             ><span class="product-price mt-5 primary-font">
               COP<b>{{ formatPrice(genericCardData.price) || '' }}</b>
             </span></div
           >
+
+          
         </v-card-text>
 
         <v-divider class="mx-4 mb-1"></v-divider>
@@ -79,7 +59,7 @@
         </v-chip-group>
       </div> -->
 
-        <v-card-actions class="actions-box primary-font">
+        <v-card-actions class="card-actions-box primary-font">
           <v-btn color="deep-purple-lighten-2" variant="text" @click="reserve">
             Ver más
           </v-btn>
@@ -136,106 +116,80 @@
 </script>
 
 <style lang="scss" scoped>
-  .card-box-container{
-    max-width: fit-content;
-    margin: 0 50px;
+.max-width{
+  max-width: 65%;
+}
+.card-box-container{
+  margin: 0 5vh;
+  .image {
+    image-rendering: optimizeSpeed; 
+    width: calc(20% - 20px);
+    max-width: 400px;
+    height: auto;
+    position: absolute;
+    margin-left: 225px;
+    margin-top: -55px;
+    z-index: 5;
   }
 
-    .max-width{
-      max-width: 235px;
-    }
-
-    .image{
-      width: 300px;
-      image-rendering: optimizeSpeed;
-      position: absolute;
-      margin-left: 205px;
-      margin-top: -55px;
-      z-index: 5;
-    }
-
-    .image-movil{
-      display: none;
-      width: 200px;
-      image-rendering: optimizeSpeed;
-      z-index: 5;
-    }
-    .card-box{
-      width: 300px;
-      height: 400px;
-
-      display: flex;
-      flex-flow: column nowrap;
-      border-radius: 25px;
-      margin: 0 250px;
-      .card-logo {
-        width: 65px;
-      }
-
-      .actions-box{
-        display: flex;
-        flex-flow: row wrap;
-        align-items: center;
-        justify-content: space-evenly;
-        width: 100%;
+  .card-box {
+    width: 350px;
+    height: 320px;
+    display: flex;
+    flex-flow: column nowrap;
+    border-radius: 25px;
+    .card-item-box{
+      .title-text{
+        font-size: 30px;
+        margin: 10px 0;
+        white-space: wrap; 
+        overflow: hidden;
+        text-overflow: ellipsis; 
       }
     }
-
-    .product-price {
-      background: #11b7e9;
-      padding: 7px 20px;
-      text-align: center;
-      display: inline-block;
-      font-size: 24px;
-      font-weight: 200;
-      color: #fff;
-      border-radius: 7px;
-      box-shadow: -10px 20px 15px -10px rgba(17, 233, 91, 0.3);
-    }
-
-    .product-price b {
-      margin-left: 5px;
-    }
-
-    .title-text{
-      text-wrap: wrap;
-      word-wrap:break-word;
-      font-size: 30px;
-      margin: 10px 0;
-    }
-
-    @media (max-width: 1288px) {
-    .card-box {
-
-    }
-
-    .image {
-      width: 250px;
-    }
-
-  }
-
-    // Media query para pantallas menores a 700px
-  @media (max-width: 900px) {
-    .card-box {
-      width: 274px;
-      height: 680px;
-      margin: 0; // Cambiar el margen a 0 o el valor que desees
+    .card-text-box{
       display: flex;
-      flex-flow: column nowrap;
-      justify-content: center;
+      flex-flow: column;
+      justify-content: flex-end;
+      height: 40px;
+      .product-price-box {
+        justify-self: center;
+        align-self: flex-start;
+        .product-price {
+          background: #11b7e9;
+          padding: 7px 20px;
+          text-align: center;
+          display: inline-block;
+          font-size: 24px;
+          font-weight: 200;
+          color: #fff;
+          border-radius: 7px;
+          box-shadow: -10px 20px 15px -10px rgba(17, 233, 91, 0.3);
+
+        }
+      }
+    }
+    .card-actions-box{
+      display: flex;
+      flex-flow: row wrap;
       align-items: center;
-    }
-
-    .image {
-      display: none; // Cambiar el margen izquierdo a 0 o el valor que desees
-    }
-    .image-movil{
-      display: block;
-    }
-
-    .max-width{
-      max-width: 330px;
+      justify-content: space-evenly;
+      width: 100%;
+      height: 70px;
+      .card-logo {
+        width: 15%;
+        height: auto;
+      }
     }
   }
+}
+@media (min-width: 1400px) {
+  .card-box-container{
+    .image {
+      width: calc(247px);
+    }
+  }
+}
 </style>
+
+
