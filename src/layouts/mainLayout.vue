@@ -1,36 +1,33 @@
 <template>
   <div class="container">
-    <navigationMobilBar >
+    <navigation-mobile-bar>
       <v-container fluid class="pa-0 ma-0" grid-list-xs>
         <v-container fluid class="pa-0 ma-0">
-          <router-view></router-view>
+          <router-view v-slot="{ Component }">
+            <transition name="slide-fade">
+              <component :is="Component" />
+            </transition>
+          </router-view>
         </v-container>
       </v-container>
-    </navigationMobilBar>
+    </navigation-mobile-bar>
     <principal-footer />
   </div>
 </template>
 
 <script setup>
-  import navigationBar from '@/components/navigation/NavigationBar/navigationBar.vue';
-  import navigationMobilBar from '../components/navigation/NavigationBar/navigationMobilBar.vue';
-
+  import navigationMobileBar from '../components/navigation/NavigationBar/navigationMobilBar.vue';
   import PrincipalFooter from '@/components/navigation/footers/principalFooter.vue';
 </script>
 
 <style lang="scss" scoped>
-  // .navigation-mobile{
-  //   display: none;
-  // }
-  //   .principal-box{
-  //       max-width: 100%;
-  //   }
-  //   @media (max-width: 900px) {
-  //     .navigation-desktop{
-  //       display: none;
-  //     }
-  //     .navigation-mobile{
-  //   display: flex;
-  // }
-  //   }
+  .slide-fade-enter-active,
+  .slide-fade-leave-active {
+    transition: opacity 0.2s ease-in; /* Ajusta la duración según sea necesario */
+  }
+
+  .slide-fade-enter-from,
+  .slide-fade-leave-to {
+    opacity: 0;
+  }
 </style>

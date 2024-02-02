@@ -1,16 +1,20 @@
 import { createRouter, createWebHistory } from "vue-router";
 
-import inicioRouter from "../modules/inicio/router";
+import inicioRouter from "@/modules/inicio/router";
+import ropaRouter from "@/modules/ropa/router";
 
 const routes = [
   {
     path: '/redecommerce/',
-    name: 'dashboard-admin',
+    name: 'dashboard',
     component: () => import('@/layouts/mainLayout.vue'),
     children: [
       {
-        path: '/redecommerce/',
         ...inicioRouter
+      },
+      {
+        path: '/redecommerce/ropa',
+        ...ropaRouter
       },
     ]
   },

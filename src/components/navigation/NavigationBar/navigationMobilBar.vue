@@ -11,17 +11,35 @@
         @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 
       <v-toolbar-title
-        ><div class="mt-1 main-nav secondary-title-font">
+        ><div
+          @click="router.push({name:'homeFirstPage'})"
+          class="mt-1 main-nav secondary-title-font">
           <a class="mobile-display">TR</a>
-          <a class="desktop-display" href="#">TIENDA ROJA</a>
+          <a variant="text" class="desktop-display">TIENDA ROJA</a>
         </div></v-toolbar-title
       >
       <div class="desktop-display">
         <ul class="main-nav secondary-title-font">
-          <li><a href="#">Ropa</a></li>
-          <li><a href="#">Libros</a></li>
-          <li><a href="#">Accesorios</a></li>
-          <li><a href="#">Contacto</a></li>
+          <li
+            ><v-btn variant="text" :to="{ name: 'ropaFirstPage' }"
+              >Ropa</v-btn
+            ></li
+          >
+          <li
+            ><v-btn variant="text" :to="{ name: 'homeFirstPage' }"
+              >Libros</v-btn
+            ></li
+          >
+          <li
+            ><v-btn variant="text" :to="{ name: 'homeFirstPage' }"
+              >Accesorios</v-btn
+            ></li
+          >
+          <li
+            ><v-btn variant="text" :to="{ name: 'homeFirstPage' }"
+              >Contacto</v-btn
+            ></li
+          >
         </ul>
       </div>
       <v-btn
@@ -47,7 +65,7 @@
       temporary
       class="primary-font"
       style="background-color: #f4f4f4;">
-      <v-list :items="items"></v-list>
+      <v-list :items="items" :selected="selected" @click:select="navigateToPage"></v-list>
     </v-navigation-drawer>
 
     <v-navigation-drawer
@@ -78,6 +96,9 @@
 
 <script setup>
   import { ref } from 'vue';
+  import { useRouter } from 'vue-router'
+
+  const router = useRouter()
 
   const drawer = ref(false);
   const search = ref(false);
@@ -87,7 +108,7 @@
   const items = ref( [
       {
           title: 'Ropa',
-          value: 'foo',
+          value: 'ropaFirstPage',
       },
       {
           title: 'Libros',
@@ -102,6 +123,13 @@
           value: 'buzz',
       },
   ]);
+
+  const selected = ref(null);
+
+  const navigateToPage = (item) => {
+    const {id} = item;
+    router.push({name:id})
+  };
 </script>
 
 <style lang="scss" scoped>
@@ -141,6 +169,8 @@
         .main-nav {
         	margin-top: 5px;
           font-size:x-large;
+          z-index: 1000;
+          cursor: pointer;
         }
         .logo a,
         .main-nav a {
