@@ -1,6 +1,6 @@
 <template>
   <div class="w-100">
-    <v-footer class="bg-indigo-lighten-1 text-center d-flex flex-column">
+    <v-footer class="bg-indigo-lighten-1 d-flex flex-column">
       <div>
         <v-btn
           v-for="icon in icons"
@@ -10,8 +10,12 @@
           variant="text"></v-btn>
       </div>
 
-      <div class="pt-0 primary-font">
-        La juventud comunista colombiana es una organización juvenil de carácter
+      <div class="pt-0 primary-font my-5 ">
+        <div class="d-flex" style="width: 100%;">
+          <v-expansion-panels>
+            <v-expansion-panel
+              title="¿Quiénes somos?"
+              text="La juventud comunista colombiana es una organización juvenil de carácter
         político, democrática, revolucionaria y antiimperialista, que lucha por
         la unidad de los jóvenes, por la defensa de sus derechos, por la paz con
         justicia social, la liberación nacional, la democracia y el socialismo.
@@ -23,7 +27,10 @@
         socialismo, en la conciencia de clase, la independencia y la soberanía.
         Somos una organización antifacista que promueve los principios del
         internacionalismo y la solidaridad con los pueblos oprimidos en el
-        mundo.
+        mundo.">
+            </v-expansion-panel>
+          </v-expansion-panels>
+        </div>
       </div>
 
       <v-divider></v-divider>
@@ -37,13 +44,13 @@
 </template>
 
 <script setup>
-import {ref} from 'vue';
-  const icons = ref([
-          'mdi-facebook',
-          'mdi-twitter',
-          'mdi-whatsapp',
-          'mdi-instagram',
-        ]);
+  import {ref} from 'vue';
+    const icons = ref([
+            'mdi-facebook',
+            'mdi-twitter',
+            'mdi-whatsapp',
+            'mdi-instagram',
+          ]);
 </script>
 
 <style lang="scss" scoped></style>

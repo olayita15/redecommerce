@@ -4,7 +4,8 @@
     <v-app-bar
       class="d-flex justify-center aling-center "
       prominent
-      style="background-color: #f4f4f4;">
+      style="background-color: #f4f4f4;"
+      >
       <v-app-bar-nav-icon
         class="primary-color mobile-display"
         variant="text"
@@ -14,7 +15,7 @@
         ><div
           @click="router.push({name:'homeFirstPage'})"
           class="mt-1 main-nav secondary-title-font">
-          <a class="mobile-display">TR</a>
+          <a class="mobile-display">TIENDA ROJA</a>
           <a variant="text" class="desktop-display">TIENDA ROJA</a>
         </div></v-toolbar-title
       >
@@ -89,6 +90,7 @@
     </v-navigation-drawer>
 
     <v-main>
+      
       <slot></slot>
     </v-main>
   </div>
@@ -97,7 +99,7 @@
 <script setup>
   import { ref } from 'vue';
   import { useRouter } from 'vue-router'
-
+  
   const router = useRouter()
 
   const drawer = ref(false);

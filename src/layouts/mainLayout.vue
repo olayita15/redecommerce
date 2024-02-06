@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <navigation-mobile-bar>
+      <breadcrumb-nav></breadcrumb-nav>
       <v-container fluid class="pa-0 ma-0" grid-list-xs>
         <v-container fluid class="pa-0 ma-0">
           <router-view v-slot="{ Component }">
@@ -16,8 +17,10 @@
 </template>
 
 <script setup>
+  import breadcrumbNav from '../components/navigation/breadcrumb/breadcrumbNav.vue';
   import navigationMobileBar from '../components/navigation/NavigationBar/navigationMobilBar.vue';
   import PrincipalFooter from '@/components/navigation/footers/principalFooter.vue';
+  
 </script>
 
 <style lang="scss" scoped>

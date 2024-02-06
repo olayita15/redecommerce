@@ -7,7 +7,7 @@
 
     <section class="hero-section">
       <div class="card-grid">
-        <a class="card" href="#">
+        <a class="card" >
           <div
             class="card__background"
             style="background-image: url(https://ih1.redbubble.net/image.2720416359.7093/ssrco,baseball_cap,womens,B7B4B8:25c8fc6a4c,front_three_quarter,tall_portrait,750x1000-bg,f8f8f8.jpg)"></div>
@@ -16,7 +16,7 @@
             <h3 class="card__heading">Gorras</h3>
           </div>
         </a>
-        <a class="card" href="#">
+        <router-link class="card" :to="{name:'categoryPage'}">
           <div
             class="card__background"
             style="background-image: url(https://i.pinimg.com/736x/56/59/34/565934cb75ebd858222913a76e2c8001.jpg)"></div>
@@ -24,7 +24,7 @@
             <p class="card__category">Categoría</p>
             <h3 class="card__heading">Camisetas</h3>
           </div>
-        </a>
+        </router-link>
         <a class="card" href="#">
           <div
             class="card__background"
@@ -50,16 +50,12 @@
 </template>
 
 <script setup>
-  import homeFirstPage from '../../inicio/views/homeFirstPage.vue';
-  const backgroundDark = '#2d3548';
-const textLight = 'rgba(255, 255, 255, 0.6)';
-const textLighter = 'rgba(255, 255, 255, 0.9)';
-const spacingS = '8px';
-const spacingM = '16px';
-const spacingL = '24px';
-const spacingXL = '32px';
-const spacingXXL = '64px';
-const widthContainer = '1200px';
+  import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
+const navigationPage = () => {router.push({name:'categoryPage'})};
+
 </script>
 
 <style lang="scss" scoped>

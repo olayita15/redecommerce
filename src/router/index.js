@@ -7,6 +7,7 @@ const routes = [
   {
     path: '/redecommerce/',
     name: 'dashboard',
+    meta: {title:'Inicio', redirection: 'homeFirstPage'},
     component: () => import('@/layouts/mainLayout.vue'),
     children: [
       {

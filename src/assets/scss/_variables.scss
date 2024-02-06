@@ -9,19 +9,19 @@ $autor-font-regular: Historia;
 
 // global.scss
 .primary-title-font {
-  font-family: $title-font-regular;
+  font-family: $title-font-regular !important;
 }
 
 .secondary-title-font {
-  font-family: $title-font-secondary;
+  font-family: $title-font-secondary !important;
 }
 
 .primary-font {
-  font-family: $principal-font-regular;
+  font-family: $principal-font-regular !important;
 }
 
 .autor-font-regular{
-  font-family: $autor-font-regular;
+  font-family: $autor-font-regular !important;
 }
 
 @font-face {

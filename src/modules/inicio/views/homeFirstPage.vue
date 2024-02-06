@@ -1,7 +1,7 @@
 <template>
   <div class="first-page">
-    <principal-carrousel />
-    <div class="d-flex flex-column justify-center align-center my-10">
+    <super-carrousel :objectSlides="objectSlides"  />
+    <div class="d-flex flex-column justify-center align-center">
       <div class="d-flex flex-column justify-xl-space-evenly align-center mb-10">
         <div class="my-5 primary-font"><h1>Artículos más vendidos</h1></div>
         <span class="my-5 primary-font">Explora nuestros artículos más populares</span>
@@ -12,7 +12,8 @@
           v-for="(data, index) in genericCardDataArray"
           :key="index">
           <generic-card class="generic-desktop-card" :genericCardData="data" />
-          <genericMobileCard class="generic-mobile-card" :genericCardData="data" />
+          <!-- <genericMobileCard class="generic-mobile-card" :genericCardData="data" /> -->
+          <simple-card class="generic-mobile-card" :cardData="data" />
         </div>
       </div>
     </div>
@@ -22,9 +23,37 @@
 <script setup>
       import {ref} from 'vue';
 
-        import principalCarrousel from '../components/molecular/principalCarrousel.vue';
+        import superCarrousel from '../components/organism/superCarrousel.vue';
         import genericCard from '../../../components/generalCards/genericCard.vue';
         import genericMobileCard from '../../../components/generalCards/genericMobileCard.vue';
+        import simpleCard from '../../ropa/components/simpleCard.vue';
+
+const objectSlides = [{
+  backgroundSlide :
+    'https://libreria.luchadeclases.org/pub/media/ubcontentslider/images/l/i/libro_filosofia_15_.jpg' ,
+  slides : [
+    { src: 'https://patriaroja.pe/wp-content/uploads/2022/05/3-1.png' },
+    { src: 'https://images.pagina12.com.ar/styles/width960/public/2017-03/sl30fo03_1.png?itok=w3848JbB' },
+    { src: 'https://1.bp.blogspot.com/-CcYHiz_IGiM/XpryqxUYM4I/AAAAAAAAD4I/8WQ5WVnLh10ZUXp1u5-d8G4RnCs2gWnPwCLcBGAsYHQ/s1600/92699421_224968638774048_8381766954616094720_n.png' },
+  ]
+},{
+  backgroundSlide :
+    'https://s.libertaddigital.com/2020/10/09/1280/0/black-lives-matter-flag-comunista.jpg' ,
+  slides : [
+    { src: 'https://www.punx.co.uk/wp-content/uploads/productimages/luxury-gay-space-communism-t-shirt.png' },
+    { src: 'https://www.lavanguardia.com/files/article_gallery_microformat/uploads/2019/06/13/5fa534aa017ee.png' },
+    { src: 'https://www.c1c.com.br/wp-content/uploads/2016/12/mockup_feminina_marx_transp.png' },
+  ]
+},{
+  backgroundSlide :
+    'https://langostaliteraria.com/wp-content/uploads/2022/02/Imagen-central-01-4-scaled.jpg' ,
+  slides : [
+    { src: 'https://cdnx.jumpseller.com/queleoconce/image/14203297/resize/540/540?1611333768' },
+    { src: 'https://www.atomcomics.net/52141-thickbox_default/cuadernos-ucranianos-diario-de-una-invasion.jpg' },
+    { src: 'https://cdn1.despertaferro-ediciones.com/wp-content/uploads/2023/04/DFC5-305x318.png' },
+  ]
+},];
+
 
 
         const genericCardDataArray = ref([
@@ -78,6 +107,7 @@
 <style lang="scss" scoped>
   .generic-mobile-card{
     display: none;
+    margin: 25px 25px;
   }
   .cards-box{
     max-width: 90%;
