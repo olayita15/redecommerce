@@ -1,8 +1,8 @@
 <template>
   <div
-    class="d-flex flex-column justify-center carousel-box"
-    :style="{ backgroundImage: `url('${backgroundSlide}')` }">
-    <v-carousel cycle hide-delimiters class="circular-box ma-0 pa-0 mx-5">
+    class="d-flex flex-row align-center carousel-box"
+    >
+    <v-carousel cycle hide-delimiters class="circular-box justify-content-start ma-0 pa-0 mx-5">
       <v-carousel-item
         v-for="(item,i) in slides"
         :key="i"
@@ -11,19 +11,21 @@
         ><img :src="item.src" alt="Imagen Circular" class="circular-image" />
       </v-carousel-item>
     </v-carousel>
+    <!-- <div class="d-flex justify-content-center text-center display-desktop" >
+      <v-btn color="red">INGRESA YA</v-btn>
+    </div> -->
   </div>
 </template>
 
 <script setup>
-  import {ref} from 'vue';
   const props = defineProps(['slides', 'backgroundSlide']);
 </script>
 
 <style lang="scss" scoped>
   .carousel-box {
-    background-size: cover;
+    background-size:contain;
     background-position: center;
-    min-height: 350px;
+    height: 100%;
     width: 100%;
   }
 
@@ -51,9 +53,13 @@
     // border-radius: 50%; /* Garantiza que la imagen sea circular */
     z-index: 10;
   }
+  .display-desktop{
+    justify-content: center;
+  }
 
-  @media (max-width: 700px) {
+  @media (max-width: 900px) {
     .carousel-box {
+      justify-content: center;
       align-items: center;
       background-size: cover;
       background-position: bottom;
@@ -62,6 +68,10 @@
     .circular-box {
       width: 80%; /* Ancho del círculo como un porcentaje de la pantalla */
       height: 40%; /* Altura del círculo como un porcentaje de la pantalla */
+    }
+
+    .display-desktop{
+      display: none;
     }
   }
 </style>
