@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import inicioRouter from "@/modules/inicio/router";
 import ropaRouter from "@/modules/ropa/router";
 import libroRouter from "../modules/libros/router";
+import contactoRouter from "../modules/contacto/router";
 
 const routes = [
   {
@@ -21,6 +22,10 @@ const routes = [
       {
         path: '/redecommerce/libros/',
         ...libroRouter
+      },
+      {
+        path: '/redecommerce/contacto/',
+        ...contactoRouter
       },
     ]
   },

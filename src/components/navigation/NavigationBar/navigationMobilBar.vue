@@ -31,13 +31,13 @@
               >Libros</v-btn
             ></li
           >
-          <li
+          <!-- <li
             ><v-btn variant="text" :to="{ name: 'homeFirstPage' }"
               >Accesorios</v-btn
             ></li
-          >
+          > -->
           <li
-            ><v-btn variant="text" :to="{ name: 'homeFirstPage' }"
+            ><v-btn variant="text" :to="{ name: 'contactoFirstPage' }"
               >Contacto</v-btn
             ></li
           >
@@ -116,13 +116,13 @@
           title: 'Libros',
           value: 'librosFirstPage',
       },
-      {
-          title: 'Accesorios',
-          value: 'fizz',
-      },
+      // {
+      //     title: 'Accesorios',
+      //     value: 'fizz',
+      // },
       {
           title: 'Contacto',
-          value: 'buzz',
+          value: 'contactoFirstPage',
       },
   ]);
 
