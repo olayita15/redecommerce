@@ -27,7 +27,7 @@
             ></li
           >
           <li
-            ><v-btn variant="text" :to="{ name: 'homeFirstPage' }"
+            ><v-btn variant="text" :to="{ name: 'librosFirstPage' }"
               >Libros</v-btn
             ></li
           >
@@ -114,7 +114,7 @@
       },
       {
           title: 'Libros',
-          value: 'bar',
+          value: 'librosFirstPage',
       },
       {
           title: 'Accesorios',
