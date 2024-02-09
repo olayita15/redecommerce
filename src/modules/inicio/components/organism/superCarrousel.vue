@@ -1,13 +1,17 @@
 <template>
   <div class="w-100 ma-0 pa-0">
     <v-carousel
-      height="400"
+      height="540"
       :show-arrows="false"
       cycle
       :interval="18000"
       hide-delimiters
       class="ma-0 pa-0">
-      <v-carousel-item v-for="(item,i) in objectSlides" :key="i" cover :src="item.backgroundSlide">
+      <v-carousel-item
+        v-for="(item,i) in objectSlides"
+        :key="i"
+        cover
+        :src="item.backgroundSlide">
         <principal-carrousel
           :slides="item.slides"
           :backgroundSlide="item.backgroundSlide" />

@@ -1,6 +1,6 @@
 <template>
   <div class="first-page">
-    <super-carrousel :objectSlides="objectSlides"  />
+    <super-carrousel :objectSlides="objectSlides" />
     <div class="d-flex flex-column justify-center align-center">
       <div class="d-flex flex-column justify-xl-space-evenly align-center mb-10">
         <div class="my-5 primary-font"><h1>Artículos más vendidos</h1></div>
@@ -16,6 +16,9 @@
           <simple-card class="generic-mobile-card" :cardData="data" />
         </div>
       </div>
+      <div class="w-100 h-100">
+        <modern-slider />
+      </div>
     </div>
   </div>
 </template>
@@ -25,18 +28,21 @@
 
         import superCarrousel from '../components/organism/superCarrousel.vue';
         import genericCard from '../../../components/generalCards/genericCard.vue';
-        import genericMobileCard from '../../../components/generalCards/genericMobileCard.vue';
         import simpleCard from '../../ropa/components/simpleCard.vue';
+        import modernSlider from '../components/organism/modernSlider.vue';
+        import background1Carrousel from '../../../assets/images/carrouselPrincipal/Background1Carrousel.webp';
+        import camisetaAdelanteFidelCastro from '../../../assets/images/carrouselPrincipal/camisetaAdelanteFidelCastro_1.webp';
+        import camisetaDetrasFidelCastro from '../../../assets/images/carrouselPrincipal/camisetaDetrasFidelCastro.webp';
 
 const objectSlides = [{
   backgroundSlide :
-    'https://libreria.luchadeclases.org/pub/media/ubcontentslider/images/l/i/libro_filosofia_15_.jpg' ,
+  background1Carrousel,
   slides : [
-    { src: 'https://patriaroja.pe/wp-content/uploads/2022/05/3-1.png' },
-    { src: 'https://images.pagina12.com.ar/styles/width960/public/2017-03/sl30fo03_1.png?itok=w3848JbB' },
-    { src: 'https://1.bp.blogspot.com/-CcYHiz_IGiM/XpryqxUYM4I/AAAAAAAAD4I/8WQ5WVnLh10ZUXp1u5-d8G4RnCs2gWnPwCLcBGAsYHQ/s1600/92699421_224968638774048_8381766954616094720_n.png' },
+    { src: camisetaAdelanteFidelCastro },
+    { src: camisetaDetrasFidelCastro },
   ]
-},{
+},
+{
   backgroundSlide :
     'https://s.libertaddigital.com/2020/10/09/1280/0/black-lives-matter-flag-comunista.jpg' ,
   slides : [
@@ -52,7 +58,8 @@ const objectSlides = [{
     { src: 'https://www.atomcomics.net/52141-thickbox_default/cuadernos-ucranianos-diario-de-una-invasion.jpg' },
     { src: 'https://cdn1.despertaferro-ediciones.com/wp-content/uploads/2023/04/DFC5-305x318.png' },
   ]
-},];
+},
+];
 
 
 

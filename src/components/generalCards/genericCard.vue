@@ -61,7 +61,7 @@
 
         <v-card-actions class="card-actions-box primary-font">
           <v-btn color="deep-purple-lighten-2" variant="text" @click="reserve">
-            Ver más
+            COMPRAR
           </v-btn>
           <img
             :src="genericCardData.logo || 'https://cdn.vuetifyjs.com/images/cards/cooking.png'"

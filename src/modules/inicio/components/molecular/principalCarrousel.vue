@@ -1,6 +1,6 @@
 <template>
   <div
-    class="d-flex flex-row align-center carousel-box"
+    class="d-flex flex-row align-center carousel-box elevation-5"
     >
     <v-carousel cycle hide-delimiters class="circular-box justify-content-start ma-0 pa-0 mx-5">
       <v-carousel-item
@@ -35,14 +35,14 @@
     max-width: 300px; /* Ancho máximo del círculo */
     max-height: 300px; /* Altura máxima del círculo */
     border-radius: 50%; /* Hace que el div sea circular */
-    border: 1px solid #181818; /* Borde del círculo */
+    // border: 1px solid #181818; /* Borde del círculo */
     overflow: hidden; /* Oculta el contenido que se sale del círculo */
     display: flex;
     justify-content: center;
     align-items: center;
     color: #fff; /* Color del texto dentro del círculo */
     font-size: 18px; /* Tamaño del texto dentro del círculo */
-    background-color: rgba(20, 57, 160, 0.473);
+    background-color: rgba(0, 0, 0, 0.623);
   }
 
   .circular-box img.circular-image {
@@ -50,7 +50,8 @@
     width: 100%; /* Ajusta la imagen al 100% del contenedor */
     height: 100%; /* Ajusta la altura al 100% del contenedor */
     object-fit:scale-down; /* Ajusta la imagen para cubrir completamente el contenedor */
-    // border-radius: 50%; /* Garantiza que la imagen sea circular */
+    border-radius: 50%; /* Garantiza que la imagen sea circular */
+    image-rendering: optimizeQuality;
     z-index: 10;
   }
   .display-desktop{
