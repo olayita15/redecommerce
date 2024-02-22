@@ -100,7 +100,7 @@
         <v-container fluid class="pa-0 ma-0" grid-list-xs>
           <v-container fluid class="pa-0 ma-0">
             <div class="d-flex flex-column">
-              <div class="d-flex flex-row justify-space-between align-center my-5">
+              <div v-if="route.name!='ropaDetailPage'" class="d-flex flex-row justify-space-between align-center my-5">
                 <span class="mx-15 primary-title-font title-font-size"></span>
                 <v-btn
                   class="mx-13"
@@ -123,8 +123,11 @@
 </template>
 
 <script setup>
-    import navigationRopa from '../components/navigationRopa.vue';
-    import { ref } from 'vue';
+  import { ref } from 'vue';
+  import { useRoute } from "vue-router";
+
+  const route = useRoute();
+
   const drawer = ref(false);
   const rail = ref(false);
   const tiposRopa= ref(['Gorras', 'Camisetas', 'Cuellos', 'Bufandas']);

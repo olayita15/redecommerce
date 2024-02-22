@@ -16,7 +16,7 @@
             <h3 class="card__heading">Gorras</h3>
           </div>
         </a>
-        <router-link class="card" :to="{name:'categoryPage'}">
+        <router-link class="card" :to="{name:'camisetasPage'}">
           <div
             class="card__background"
             style="background-image: url(https://i.pinimg.com/736x/56/59/34/565934cb75ebd858222913a76e2c8001.jpg)"></div>

@@ -16,7 +16,7 @@ const routes = [
         ...inicioRouter
       },
       {
-        path: '/redecommerce/ropa',
+        path: '/redecommerce/ropa/',
         ...ropaRouter
       },
       {

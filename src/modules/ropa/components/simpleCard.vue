@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="d-flex flex-column justify-center align-center ">
+    <div class="d-flex flex-column justify-center align-center " @click="pushRoute(cardData)">
       <span
         class="primary-title-font title-font title-position"
         >{{ cardData.title|| 'Card title' }}</span
@@ -59,6 +59,12 @@
 
 <script setup>
   import {ref} from 'vue';
+  import { useRouter } from 'vue-router';
+  import { toast } from 'vue3-toastify';
+
+
+  const router = useRouter();
+
   const show = ref(false);
   const props = defineProps(['cardData']);
   const formatPrice = (price) => {
@@ -72,6 +78,14 @@
       style: 'currency',
       currency: 'COP'
     }).format(price);
+  };
+
+  function pushRoute(item){
+    try {
+      router.push({name:'ropaDetailPage', params: {id: item.slug}})
+    } catch (error) {
+      toast.error('No fue posible acceder a la página solicitada');
+    }
   };
 </script>
 

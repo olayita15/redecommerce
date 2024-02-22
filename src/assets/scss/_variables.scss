@@ -60,3 +60,13 @@ $autor-font-regular: Historia;
     url("@/assets/fonts/soviet.ttf") format("truetype");
 }
 
+// EFECTOS
+.slide-fade-enter-active,
+.slide-fade-leave-active {
+  transition: opacity 0.2s ease-in; /* Ajusta la duración según sea necesario */
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  opacity: 0;
+}

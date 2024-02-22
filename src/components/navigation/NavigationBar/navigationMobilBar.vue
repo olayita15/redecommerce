@@ -51,7 +51,6 @@
             variant="text"
             icon="mdi-shopping-outline"></v-btn>
         </div>
-
       </div>
     </v-app-bar>
 
@@ -99,7 +98,7 @@
   import breadcrumbNav from '../breadcrumb/breadcrumbNav.vue';
 
 
-  const router = useRouter()
+  const router = useRouter();
 
   const drawer = ref(false);
   const search = ref(false);
