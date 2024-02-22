@@ -1,63 +1,58 @@
 <template>
-  <!-- <v-system-bar color="deep-purple darken-3"></v-system-bar> -->
-  <div class="navigation-mobile">
-    <v-app-bar
-      class="d-flex justify-center aling-center "
-      prominent
-      style="background-color: #f4f4f4;"
-      >
-      <v-app-bar-nav-icon
-        class="primary-color mobile-display"
-        variant="text"
-        @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+  <div>
+    <v-app-bar class="pa-0" prominent style="background-color: #f4f4f4;">
+      <div class="d-flex flex-column  w-100">
+        <div class="d-flex justify-center align-center">
+          <v-app-bar-nav-icon
+            class="primary-color mobile-display"
+            variant="text"
+            @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 
-      <v-toolbar-title
-        ><div
-          @click="router.push({name:'homeFirstPage'})"
-          class="mt-1 main-nav secondary-title-font">
-          <a class="mobile-display">TIENDA ROJA</a>
-          <a variant="text" class="desktop-display">TIENDA ROJA</a>
-        </div></v-toolbar-title
-      >
-      <div class="desktop-display">
-        <ul class="main-nav secondary-title-font">
-          <li
-            ><v-btn variant="text" :to="{ name: 'ropaFirstPage' }"
-              >Ropa</v-btn
-            ></li
+          <v-toolbar-title
+            ><div
+              @click="router.push({name:'homeFirstPage'})"
+              class="mt-4 main-nav secondary-title-font">
+              <a class="mobile-display">TIENDA ROJA</a>
+              <a variant="text" class="desktop-display">TIENDA ROJA</a>
+            </div></v-toolbar-title
           >
-          <li
-            ><v-btn variant="text" :to="{ name: 'librosFirstPage' }"
-              >Libros</v-btn
-            ></li
-          >
-          <!-- <li
+          <div class="desktop-display">
+            <ul class="main-nav secondary-title-font">
+              <li
+                ><v-btn variant="text" :to="{ name: 'ropaFirstPage' }"
+                  >Ropa</v-btn
+                ></li
+              >
+              <li
+                ><v-btn variant="text" :to="{ name: 'librosFirstPage' }"
+                  >Libros</v-btn
+                ></li
+              >
+              <!-- <li
             ><v-btn variant="text" :to="{ name: 'homeFirstPage' }"
               >Accesorios</v-btn
             ></li
           > -->
-          <li
-            ><v-btn variant="text" :to="{ name: 'contactoFirstPage' }"
-              >Contacto</v-btn
-            ></li
-          >
-        </ul>
+              <li
+                ><v-btn variant="text" :to="{ name: 'contactoFirstPage' }"
+                  >Contacto</v-btn
+                ></li
+              >
+            </ul>
+          </div>
+          <v-btn
+            class="primary-color"
+            variant="text"
+            icon="mdi-magnify"
+            @click.stop="search = !search"></v-btn>
+
+          <v-btn
+            class="primary-color"
+            variant="text"
+            icon="mdi-shopping-outline"></v-btn>
+        </div>
+
       </div>
-      <v-btn
-        class="primary-color"
-        variant="text"
-        icon="mdi-magnify"
-        @click.stop="search = !search"></v-btn>
-
-      <v-btn
-        class="primary-color"
-        variant="text"
-        icon="mdi-shopping-outline"></v-btn>
-
-      <!-- <v-btn
-        class="primary-color"
-        variant="text"
-        icon="mdi-dots-vertical"></v-btn> -->
     </v-app-bar>
 
     <v-navigation-drawer
@@ -66,7 +61,10 @@
       temporary
       class="primary-font"
       style="background-color: #f4f4f4;">
-      <v-list :items="items" :selected="selected" @click:select="navigateToPage"></v-list>
+      <v-list
+        :items="items"
+        :selected="selected"
+        @click:select="navigateToPage"></v-list>
     </v-navigation-drawer>
 
     <v-navigation-drawer
@@ -90,7 +88,6 @@
     </v-navigation-drawer>
 
     <v-main>
-      
       <slot></slot>
     </v-main>
   </div>
@@ -99,7 +96,9 @@
 <script setup>
   import { ref } from 'vue';
   import { useRouter } from 'vue-router'
-  
+  import breadcrumbNav from '../breadcrumb/breadcrumbNav.vue';
+
+
   const router = useRouter()
 
   const drawer = ref(false);

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div >
     <v-breadcrumbs
       class="breadcrumb"
       density="compact"

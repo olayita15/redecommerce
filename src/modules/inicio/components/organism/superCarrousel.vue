@@ -1,7 +1,7 @@
 <template>
   <div class="w-100 ma-0 pa-0">
     <v-carousel
-      height="540"
+      height="800"
       :show-arrows="false"
       cycle
       :interval="18000"
