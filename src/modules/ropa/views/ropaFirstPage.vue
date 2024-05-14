@@ -7,42 +7,17 @@
 
     <section class="hero-section">
       <div class="card-grid">
-        <a class="card" >
-          <div
-            class="card__background"
-            style="background-image: url(https://ih1.redbubble.net/image.2720416359.7093/ssrco,baseball_cap,womens,B7B4B8:25c8fc6a4c,front_three_quarter,tall_portrait,750x1000-bg,f8f8f8.jpg)"></div>
-          <div class="card__content">
-            <p class="card__category">Categoría</p>
-            <h3 class="card__heading">Gorras</h3>
+        <div v-for="(category, index) in actualCategoryList" :key="index">
+          <div class="card" @click="navigationPage(category)">
+            <div
+              class="card__background"
+              :style="{ 'background-image': 'url(' + category.image?.url + ')' }"></div>
+            <div class="card__content">
+              <p class="card__category">Categoría</p>
+              <h3 class="card__heading">{{ category.name }}</h3>
+            </div>
           </div>
-        </a>
-        <router-link class="card" :to="{name:'camisetasPage'}">
-          <div
-            class="card__background"
-            style="background-image: url(https://i.pinimg.com/736x/56/59/34/565934cb75ebd858222913a76e2c8001.jpg)"></div>
-          <div class="card__content">
-            <p class="card__category">Categoría</p>
-            <h3 class="card__heading">Camisetas</h3>
-          </div>
-        </router-link>
-        <a class="card" href="#">
-          <div
-            class="card__background"
-            style="background-image: url(https://cdn-images.threadless.com/threadless-media/artist_shops/shops/burroart/products/2608005/neck-gaiter_performance_single-layer-1639783341-ba93ffc970590f97847e1bc8061d6b92.jpg?v=3&d=eyJvcHMiOiBbWyJyZXNpemUiLCBbODAwXSwge31dLCBbImNhbnZhc19jZW50ZXJlZCIsIFs4MDAsIDgwMCwgIiNmZmZmZmYiXSwge31dLCBbImVuY29kZSIsIFsianBnIiwgODVdLCB7fV1dLCAiZm9yY2UiOiBmYWxzZSwgIm9ubHlfbWV0YSI6IGZhbHNlfQ==)"></div>
-          <div class="card__content">
-            <p class="card__category">Categoría</p>
-            <h3 class="card__heading">Cuellos</h3>
-          </div>
-        </a>
-        <a class="card" href="#">
-          <div
-            class="card__background"
-            style="background-image: url(https://i.etsystatic.com/7509119/r/il/c86209/5629388129/il_570xN.5629388129_tvot.jpg)"></div>
-          <div class="card__content">
-            <p class="card__category">Categoría</p>
-            <h3 class="card__heading">Bufandas</h3>
-          </div>
-        </a>
+        </div>
       </div>
     </section>
   </v-container>
@@ -50,12 +25,27 @@
 </template>
 
 <script setup>
-  import { useRouter } from 'vue-router'
+import { computed, onMounted } from 'vue';
+import { useRouter } from 'vue-router';
+import { useStore } from 'vuex';
 
+const store = useStore()
 const router = useRouter()
 
-const navigationPage = () => {router.push({name:'categoryPage'})};
+const actualCategoryList = computed(() => store.getters['ropaStore/actualCategoryList']);
+const cambiarCategories = () => store.dispatch("ropaStore/cambiarCategories");
 
+const navigationPage = (category) => {
+  router.beforeEach((to, from, next) => {
+    to.meta['title'] = category.slug;
+    next();
+  });
+  router.push({name:'filterByCategoryProductListPage', params: {category: category.slug}})
+};
+
+onMounted(()=>{
+  cambiarCategories();
+})
 </script>
 
 <style lang="scss" scoped>
@@ -89,6 +79,7 @@ const navigationPage = () => {router.push({name:'categoryPage'})};
   .card {
     list-style: none;
     position: relative;
+    cursor: pointer;
 
     &:before {
       content: '';

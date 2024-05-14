@@ -1,22 +1,26 @@
+import { useRoute } from 'vue-router';
+const route = useRoute();
+
+
 export default {
   name: "ropaLayout",
   meta: {title:'Categorías de ropa', redirection: 'ropaFirstPage'},
   component: () => import("../layouts/ropaLayout.vue"),
   children: [
     {
-      path: "",
+      path: "category/",
       name: "ropaFirstPage",
       component: () => import("../views/ropaFirstPage.vue"),
     },
     {
-      path: "camisetas/",
-      name: "categoryPage",
-      meta: {title:'Camisetas', redirection: 'camisetasPage'},
+      path: ":category/",
+      name: "categoryLayout",
+      meta: { redirection: 'filterByCategoryProductListPage'},
       component: () => import("../layouts/categoryLayout.vue"),
       children: [
         {
           path: "",
-          name: "camisetasPage",
+          name: "filterByCategoryProductListPage",
           component: () => import("../views/categoryPage.vue"),
         },
         {

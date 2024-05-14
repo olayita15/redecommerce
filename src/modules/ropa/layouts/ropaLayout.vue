@@ -23,14 +23,14 @@
         <v-divider></v-divider>
 
         <v-list density="compact" nav v-if="!rail">
-          <v-checkbox label="Precio: más bajo primero"></v-checkbox>
-
+          <v-checkbox v-model="lowPrice" label="Precio: más bajo primero" @update:modelValue="changeLowPrice"></v-checkbox>
           <v-card-text class="ma-3 pa-0">
             <h2 class="mb-2"> Tipo de ropa </h2>
-            <v-chip-group v-model="tiposRopaValue" column multiple filter>
+            <v-chip-group v-model="categoryRopa" column multiple filter @update:modelValue="changeCategory">
               <v-chip
                 v-for="(chip, index) in tiposRopa"
-                :key="index"
+                :key="chip"
+                :value="chip"
                 :color="colorChips[index]"
                 >{{ chip }}
               </v-chip>
@@ -39,11 +39,12 @@
 
           <v-card-text class="ma-3 pa-0">
             <h2 class="mb-2"> Talla </h2>
-            <v-chip-group v-model="tallasRopaValue" column multiple filter>
+            <v-chip-group v-model="tallasRopaValue" column multiple filter @update:modelValue="changeAvailableSizes">
               <v-chip
                 v-for="(chip, index) in tallasRopa"
                 :key="index"
                 :color="colorChips[index]"
+                :value="chip"
                 >{{ chip }}
               </v-chip>
             </v-chip-group>
@@ -51,18 +52,19 @@
 
           <v-card-text class="ma-3 pa-0">
             <h2 class="mb-2"> Color </h2>
-            <v-chip-group v-model="colorRopaValue" column multiple filter>
+            <v-chip-group v-model="colorRopaValue" column multiple filter @update:modelValue="changeAvalibleColors">
               <v-chip
                 v-for="(chip, index) in colores"
                 :key="index"
                 :color="colorChips[index]"
+                :value="chip.value"
                 >{{ chip.text }}
               </v-chip>
             </v-chip-group>
           </v-card-text>
 
           <!-- <v-select
-            v-model="tiposRopaValue"
+            v-model="categoryRopa"
             :items="tiposRopa"
             chips
             label="Tipo de ropa"
@@ -123,25 +125,49 @@
 </template>
 
 <script setup>
-  import { ref } from 'vue';
+  import { ref, computed, onMounted } from 'vue';
   import { useRoute } from "vue-router";
-
+  import { useStore } from 'vuex';
+  
   const route = useRoute();
+  const store = useStore();
 
+  const actualFilterRopa = computed(() => store.getters['ropaStore/actualFilterRopa']);
+  const addFilter = (filter_object) => store.dispatch("ropaStore/addFilter", filter_object);
+
+  const lowPrice = ref(false);
   const drawer = ref(false);
   const rail = ref(false);
-  const tiposRopa= ref(['Gorras', 'Camisetas', 'Cuellos', 'Bufandas']);
-  const tiposRopaValue= ref([]);
+  const tiposRopa= ref(['gorras', 'camisetas', 'cuellos', 'bufandas']);
+  const categoryRopa= ref([]);
   const tallasRopa= ref(['S', 'M', 'L', 'XL']);
   const tallasRopaValue= ref([]);
   const colores = ref([
-      { text: 'Rojo', value: 1, color: 'red' },
-      { text: 'Azul', value: 2, color: 'blue' },
-      { text: 'Verde', value: 3, color: 'green' },
-      { text: 'Negro', value: 3, color: 'black' },
+      { text: 'Rojo', value: 'red', color: 'red' },
+      { text: 'Azul', value: 'blue', color: 'blue' },
+      { text: 'Verde', value: 'green', color: 'green' },
+      { text: 'Negro', value: 'black', color: 'black' },
     ]);
   const colorChips = ref(['red','blue','green','purple'])
   const colorRopaValue= ref([]);
+
+  const changeCategory = () => {
+    addFilter({'atributo':'category','valor':categoryRopa.value});
+  };
+  
+  const changeLowPrice = () => {
+    addFilter({'atributo':'lowPrice','valor':lowPrice.value});
+  };
+  const changeAvailableSizes = () => {
+    addFilter({'atributo':'availableSizes','valor':tallasRopaValue.value});
+  };
+  const changeAvalibleColors = () => {
+    addFilter({'atributo':'avalibleColors','valor':colorRopaValue.value});
+  };
+
+  onMounted(()=>{
+    categoryRopa.value = actualFilterRopa.value.category;
+  })
 </script>
 <style lang="scss" scoped>
 .title-font-size{
