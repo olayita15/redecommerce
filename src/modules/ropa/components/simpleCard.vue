@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="d-flex flex-column justify-center align-center " @click="pushRoute(cardData)">
+    <div class="d-flex flex-column justify-center align-center my-5" @click="pushRoute(cardData)">
       <span
         class="primary-title-font title-font title-position"
         >{{ cardData.title|| 'Card title' }}</span

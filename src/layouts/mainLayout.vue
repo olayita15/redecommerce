@@ -1,9 +1,9 @@
 <template>
   <div class="container">
-    <navigation-mobile-bar>
-      <div class="breadcrumb-wrapper">
+    <navigationMobileBar :elevation="2" />
+      <!-- <div class="breadcrumb-wrapper">
         <breadcrumb-nav></breadcrumb-nav>
-      </div>
+      </div> -->
       <v-container fluid class="pa-0 ma-0 ">
         <div class="main-box">
           <router-view v-slot="{ Component }">
@@ -14,7 +14,6 @@
         </div>
       </v-container>
       <principal-footer />
-    </navigation-mobile-bar>
   </div>
 </template>
 
@@ -32,6 +31,7 @@
     z-index: 1000;
   }
   .main-box{
-    margin: 52px 0 0 0;
+    min-height: 100vh;
+    margin: 65px 0 0 0;
   }
 </style>

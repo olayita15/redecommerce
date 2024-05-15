@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-app-bar class="pa-0" prominent style="background-color: #f4f4f4;">
+    <v-app-bar class="pa-0" style="background-color: #f4f4f4;" scroll-behavior="hide">
       <div class="d-flex flex-column  w-100">
         <div class="d-flex justify-center align-center">
           <v-app-bar-nav-icon
@@ -11,12 +11,12 @@
           <v-toolbar-title
             ><div
               @click="router.push({name:'homeFirstPage'})"
-              class="mt-4 main-nav secondary-title-font">
+              class="main-nav secondary-title-font">
               <a class="mobile-display">TIENDA ROJA</a>
               <a variant="text" class="desktop-display">TIENDA ROJA</a>
             </div></v-toolbar-title
           >
-          <div class="desktop-display">
+          <div class="desktop-display mb-1 pa-0">
             <ul class="main-nav secondary-title-font">
               <li
                 ><v-btn variant="text" :to="{ name: 'ropaFirstPage' }"
@@ -85,10 +85,6 @@
           density="compact"></v-text-field>
       </div>
     </v-navigation-drawer>
-
-    <v-main>
-      <slot></slot>
-    </v-main>
   </div>
 </template>
 
