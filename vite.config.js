@@ -7,7 +7,6 @@ import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 const path = require("path");
 
 export default defineConfig({
-  base: 'https://redecommerce.onrender.com/',
   plugins: [
     vue({ 
       template: { transformAssetUrls }
