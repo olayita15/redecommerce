@@ -1,10 +1,10 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Honk&family=Russo+One&display=swap');
 // _variables.scss
-$title-font-regular: Headliner, "Russo One", Soviet, Georgia;
-$title-font-secondary: Soviet, "Russo One";
-$principal-font-regular: Futura, Soviet, Georgia;
-$autor-font-regular: Historia;
+$title-font-regular: "Headliner", "Russo One", "Soviet", Georgia;
+$title-font-secondary: "Soviet", "Russo One";
+$principal-font-regular: "Futura", "Soviet", Georgia;
+$autor-font-regular: "Historia";
 // $primary-font: 'Georgia';
 
 // global.scss
@@ -29,7 +29,7 @@ $autor-font-regular: Historia;
   font-style: normal;
   font-display: auto;
   unicode-range: U+000-5FF;
-  src: local("Roboto"), url("@/assets/fonts/Headliner.woff2") format("woff2")
+  src: local("Headliner"), url("@/assets/fonts/Headliner.woff2") format("woff2")
 }
 
 @font-face {
@@ -37,7 +37,7 @@ $autor-font-regular: Historia;
   font-style: normal;
   font-display: auto;
   unicode-range: U+000-5FF;
-  src: local("Roboto"),
+  src: local("Futura"),
     url("@/assets/fonts/FuturaRegular.ttf") format("truetype");
 }
 
@@ -46,8 +46,18 @@ $autor-font-regular: Historia;
   font-style: normal;
   font-display: auto;
   unicode-range: U+000-5FF;
-  src: local("Roboto"),
+  src: local("Historia"),
     url("@/assets/fonts/thehistoriademo.ttf") format("truetype");
+}
+
+// MOVIL FONTS
+@font-face {
+  font-family: "Russo One";
+  font-style: normal;
+  font-display: auto;
+  unicode-range: U+000-5FF;
+  src: local("Russo One"),
+    url("@/assets/fonts/Russo_One.ttf") format("truetype");
 }
 
 // MOVIL FONTS
@@ -56,7 +66,7 @@ $autor-font-regular: Historia;
   font-style: normal;
   font-display: auto;
   unicode-range: U+000-5FF;
-  src: local("Roboto"),
+  src: local("Soviet"),
     url("@/assets/fonts/soviet.ttf") format("truetype");
 }
 

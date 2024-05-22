@@ -13,7 +13,7 @@
                         <h1>Descuentos en ropa y libros</h1>
                         <h3 class="primary-font">Un individuo solo puede hacer poco; unidos podemos hacer mucho.</h3>
                         <h2 class="secondary-title-font">Tienda Roja.</h2>
-                        <v-btn class="primary-font btn" href="#tab-descuentos">Ver más</v-btn>
+                        <v-btn class="primary-font btn" @click="scrollToComponente('tab-descuentos')">Ver más</v-btn>
                     </div>
                     <div v-if="i===1" class="slider-box ">
                         <principal-carrousel :slides="slides" />
@@ -24,11 +24,11 @@
         
         <section class="et-hero-tabs-menu primary-font pb-10">
             <div class="et-hero-tabs-container">
-            <a class="et-hero-tab" href="#tab-descuentos">Descuentos</a>
-            <a class="et-hero-tab" href="#tab-flexbox">Ropa</a>
-            <a class="et-hero-tab" href="#tab-react">Libros</a>
+            <a class="et-hero-tab" @click="scrollToComponente('tab-descuentos')">Descuentos</a>
+            <a class="et-hero-tab" @click="scrollToComponente('tab-flexbox')">Ropa</a>
+            <a class="et-hero-tab" @click="scrollToComponente('tab-react')">Libros</a>
             <!-- <a class="et-hero-tab" href="#tab-angular">Angular</a> -->
-            <a class="et-hero-tab" href="#tab-other">Contacto</a>
+            <a class="et-hero-tab" @click="scrollToComponente('tab-other')">Contacto</a>
             <span class="et-hero-tab-slider"></span>
         </div>
         </section>
@@ -46,7 +46,7 @@
                     </div>
                 </div>
             </section>
-            <section class="et-slide" id="tab-flexbox">
+            <section class="et-slide clothes-section" id="tab-flexbox">
                 <h1>Sección de ropa</h1>
                 <h3>Si los medios no informan, nuestra moda lo hará.</h3>
                 <div class="d-flex flex-wrap justify-space-around align-center my-5">
@@ -63,7 +63,7 @@
             <h1>Angular</h1>
             <h3>something about angular</h3>
             </section> -->
-            <section class="et-slide" id="tab-other" >
+            <section class="et-slide contact-section" id="tab-other" >
             <h1 style="cursor: pointer;">Contacto</h1>
             <h3>¿Quieres saber más de nosotros?</h3>
             </section>
@@ -86,6 +86,11 @@ const currentId = ref(null);
 const currentTab = ref(null);
 const tabContainerHeight = ref(70);
 
+const scrollToComponente = (id_component) => {
+  const componente = document.getElementById(id_component); // Selecciona el elemento del componente
+  componente.scrollIntoView({ behavior: 'smooth' }); // Desplaza la vista hacia el componente
+};
+
 const items = ref([
     {
         src: 'https://assets.editorial.aetnd.com/uploads/2019/10/communism-socialism-gettyimages-986270630.jpg',
@@ -96,18 +101,22 @@ const items = ref([
 ]);
 
 const slides = ref([
-    { src: camisetaAdelanteFidelCastro },
-    { src: camisetaDetrasFidelCastro },
+    { src: camisetaAdelanteFidelCastro, title: 'Camiseta Revolución Cubana (Frente)', 
+    slug: 'camiseta-revolucion-comunista', category: 'camisetas' },
+    { src: camisetaDetrasFidelCastro, title: 'Camiseta Revolución Cubana (Detrás)', 
+    slug: 'camiseta-revolucion-comunista', category: 'camisetas' },
 ]);
 
 const slides2 = ref([
-    { src: 'https://i0.wp.com/maltaesportes.com.br/wp-content/uploads/2023/11/a9d57795-removebg-preview.png?fit=433%2C577&ssl=1' },
-    { src: 'https://i.ebayimg.com/images/g/~zYAAOSw9l5jiby7/s-l1200.webp' }
+    { src: 'https://cdnx.jumpseller.com/palestino/image/45458410/resize/255/255?1707767558', 
+    title: 'Camiseta de fútbol Palestina (Negra)' },
+    { src: 'https://i.ebayimg.com/images/g/~zYAAOSw9l5jiby7/s-l1200.webp', 
+    title: 'Camiseta de fútbol Palestina (Blanca)' }
 ]);
 
 const slides3 = ref([
-    { src: 'https://i.ebayimg.com/images/g/BQYAAOSwNjhjDgmN/s-l1200.webp' },
-    { src: 'https://blackpeopleunitedclothing.com/cdn/shop/products/5e259abf944b991e50a3d125a89a3e29_800x.png?v=1642227361' }
+    { src: 'https://i.ebayimg.com/images/g/BQYAAOSwNjhjDgmN/s-l1200.webp', title: 'Camiseta Angela Davis (Rosa)' },
+    { src: 'https://blackpeopleunitedclothing.com/cdn/shop/products/5e259abf944b991e50a3d125a89a3e29_800x.png?v=1642227361', title: 'Camiseta Angela Davis (Azul)' }
 ]);
 
 const genericCardDataArray = ref([
@@ -347,9 +356,9 @@ a {
     flex: 1;
     color: #000;
     letter-spacing: 0.1rem;
-		transition: all 0.5s ease;
-		font-size: 0.8rem;
-	  &:hover {
+    transition: all 0.5s ease;
+    font-size: 0.8rem;
+	    &:hover {
 			color:white;
             background: rgba(241, 111, 102, 0.8);
     //   background: rgba(102,177,241,0.8);
@@ -365,7 +374,12 @@ a {
     background: #66B1F1;
     transition: left 0.3s ease;
 }
-
+.clothes-section{
+    background-color: #66b0f125;
+}
+.contact-section{
+    background-color: #66b0f125;
+}
 @media (min-width: 800px) {
 
     .slider-box{

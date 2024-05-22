@@ -71,7 +71,7 @@
             <button type = "button" class = "btn">
               Añadir al carrito <i class = "fas fa-shopping-cart"></i>
             </button>
-            <button type = "button" class = "btn">Whatsapp</button>
+            <button type = "button" class="btn" @click="sendHelpRopa">Whatsapp</button>
           </div>
 
           <div class = "social-links">
@@ -101,8 +101,11 @@
 <script setup>
 import { ref, reactive } from 'vue';
 
+import { RopaWhatsappService } from '../services/ropaWhatsappService';
 import camisetaAdelanteFidelCastro from '@/assets/images/carrouselPrincipal/camisetaAdelanteFidelCastro_1.webp';
 import camisetaDetrasFidelCastro from '@/assets/images/carrouselPrincipal/camisetaDetrasFidelCastro.webp';
+
+const ropaWhatsappService = new RopaWhatsappService('+573225928238');
 
 const select_index = ref(0);
 const imageList = ref([
@@ -129,6 +132,12 @@ const colorChips = ref(['red','blue','green','purple']);
 
 const selectionIndex = (index) =>{
   select_index.value = index;
+};
+
+const sendHelpRopa = () => {
+  let link_url = '';
+  link_url = ropaWhatsappService.sendHelp(productData.title);
+  window.open(link_url, '_blank');
 };
 </script>
 
