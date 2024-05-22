@@ -16,7 +16,10 @@
           <div class="card-item-box">
             <v-card-title class="max-width"
               ><div class="title-text primary-title-font">
-                <span class="break-word" >{{ genericCardData.title || 'Default Title' }}</span>
+                <span
+                  class="break-word"
+                  >{{ genericCardData.title || 'Default Title' }}</span
+                >
               </div>
             </v-card-title>
 
@@ -35,14 +38,11 @@
         </v-card-item>
 
         <v-card-text class="card-text-box">
-
           <div class="product-price-box mt-4 text-subtitle-1 primary-font"
             ><span class="product-price mt-5 primary-font">
               COP<b>{{ formatPrice(genericCardData.price) || '' }}</b>
             </span></div
           >
-
-          
         </v-card-text>
 
         <v-divider class="mx-4 mb-1"></v-divider>
@@ -61,7 +61,7 @@
 
         <v-card-actions class="card-actions-box primary-font">
           <v-btn color="deep-purple-lighten-2" variant="text" @click="reserve">
-            Ver más
+            COMPRAR
           </v-btn>
           <img
             :src="genericCardData.logo || 'https://cdn.vuetifyjs.com/images/cards/cooking.png'"
@@ -116,80 +116,78 @@
 </script>
 
 <style lang="scss" scoped>
-.max-width{
-  max-width: 65%;
-}
-.card-box-container{
-  margin: 0 5vh;
-  .image {
-    image-rendering: optimizeSpeed; 
-    width: calc(20% - 20px);
-    max-width: 400px;
-    height: auto;
-    position: absolute;
-    margin-left: 225px;
-    margin-top: -55px;
-    z-index: 5;
+  .max-width{
+    max-width: 65%;
   }
-
-  .card-box {
-    width: 350px;
-    height: 320px;
-    display: flex;
-    flex-flow: column nowrap;
-    border-radius: 25px;
-    .card-item-box{
-      .title-text{
-        font-size: 30px;
-        margin: 10px 0;
-        white-space: wrap; 
-        overflow: hidden;
-        text-overflow: ellipsis; 
-      }
+  .card-box-container{
+    margin: 0 5vh;
+    .image {
+      image-rendering: optimizeSpeed;
+      width: calc(20% - 20px);
+      max-width: 400px;
+      height: auto;
+      position: absolute;
+      margin-left: 225px;
+      margin-top: -55px;
+      z-index: 5;
     }
-    .card-text-box{
-      display: flex;
-      flex-flow: column;
-      justify-content: flex-end;
-      height: 40px;
-      .product-price-box {
-        justify-self: center;
-        align-self: flex-start;
-        .product-price {
-          background: #11b7e9;
-          padding: 7px 20px;
-          text-align: center;
-          display: inline-block;
-          font-size: 24px;
-          font-weight: 200;
-          color: #fff;
-          border-radius: 7px;
-          box-shadow: -10px 20px 15px -10px rgba(17, 233, 91, 0.3);
 
+    .card-box {
+      width: 350px;
+      height: 320px;
+      display: flex;
+      flex-flow: column nowrap;
+      border-radius: 25px;
+      .card-item-box{
+        .title-text{
+          font-size: 30px;
+          margin: 10px 0;
+          white-space: wrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+      .card-text-box{
+        display: flex;
+        flex-flow: column;
+        justify-content: flex-end;
+        height: 40px;
+        .product-price-box {
+          justify-self: center;
+          align-self: flex-start;
+          .product-price {
+            background: #11b7e9;
+            padding: 7px 20px;
+            text-align: center;
+            display: inline-block;
+            font-size: 24px;
+            font-weight: 200;
+            color: #fff;
+            border-radius: 7px;
+            box-shadow: -10px 20px 15px -10px rgba(17, 233, 91, 0.3);
+
+          }
+        }
+      }
+      .card-actions-box{
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        justify-content: space-evenly;
+        width: 100%;
+        height: 70px;
+        .card-logo {
+          width: 15%;
+          height: auto;
         }
       }
     }
-    .card-actions-box{
-      display: flex;
-      flex-flow: row wrap;
-      align-items: center;
-      justify-content: space-evenly;
-      width: 100%;
-      height: 70px;
-      .card-logo {
-        width: 15%;
-        height: auto;
+  }
+  @media (min-width: 1400px) {
+    .card-box-container{
+      .image {
+        width: calc(247px);
       }
     }
   }
-}
-@media (min-width: 1400px) {
-  .card-box-container{
-    .image {
-      width: calc(247px);
-    }
-  }
-}
 </style>
-
-

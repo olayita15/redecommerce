@@ -1,44 +1,57 @@
 <template>
-  <!-- <v-system-bar color="deep-purple darken-3"></v-system-bar> -->
-  <div class="navigation-mobile">
-    <v-app-bar
-      class="d-flex justify-center aling-center "
-      prominent
-      style="background-color: #f4f4f4;">
-      <v-app-bar-nav-icon
-        class="primary-color mobile-display"
-        variant="text"
-        @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+  <div>
+    <v-app-bar class="pa-0" style="background-color: #f4f4f4;" scroll-behavior="hide">
+      <div class="d-flex flex-column  w-100">
+        <div class="d-flex justify-center align-center">
+          <v-app-bar-nav-icon
+            class="primary-color mobile-display"
+            variant="text"
+            @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 
-      <v-toolbar-title
-        ><div class="mt-1 main-nav secondary-title-font">
-          <a class="mobile-display">TR</a>
-          <a class="desktop-display" href="#">TIENDA ROJA</a>
-        </div></v-toolbar-title
-      >
-      <div class="desktop-display">
-        <ul class="main-nav secondary-title-font">
-          <li><a href="#">Ropa</a></li>
-          <li><a href="#">Libros</a></li>
-          <li><a href="#">Accesorios</a></li>
-          <li><a href="#">Contacto</a></li>
-        </ul>
+          <v-toolbar-title
+            ><div
+              @click="router.push({name:'homeFirstPage'})"
+              class="main-nav secondary-title-font">
+              <a class="mobile-display">TIENDA ROJA</a>
+              <a variant="text" class="desktop-display">TIENDA ROJA</a>
+            </div></v-toolbar-title
+          >
+          <div class="desktop-display mb-1 pa-0">
+            <ul class="main-nav secondary-title-font">
+              <li
+                ><v-btn variant="text" :to="{ name: 'ropaFirstPage' }"
+                  >Ropa</v-btn
+                ></li
+              >
+              <li
+                ><v-btn variant="text" :to="{ name: 'librosFirstPage' }"
+                  >Libros</v-btn
+                ></li
+              >
+              <!-- <li
+            ><v-btn variant="text" :to="{ name: 'homeFirstPage' }"
+              >Accesorios</v-btn
+            ></li
+          > -->
+              <li
+                ><v-btn variant="text" :to="{ name: 'contactoFirstPage' }"
+                  >Contacto</v-btn
+                ></li
+              >
+            </ul>
+          </div>
+          <v-btn
+            class="primary-color"
+            variant="text"
+            icon="mdi-magnify"
+            @click.stop="search = !search"></v-btn>
+
+          <v-btn
+            class="primary-color"
+            variant="text"
+            icon="mdi-shopping-outline"></v-btn>
+        </div>
       </div>
-      <v-btn
-        class="primary-color"
-        variant="text"
-        icon="mdi-magnify"
-        @click.stop="search = !search"></v-btn>
-
-      <v-btn
-        class="primary-color"
-        variant="text"
-        icon="mdi-shopping-outline"></v-btn>
-
-      <!-- <v-btn
-        class="primary-color"
-        variant="text"
-        icon="mdi-dots-vertical"></v-btn> -->
     </v-app-bar>
 
     <v-navigation-drawer
@@ -47,7 +60,10 @@
       temporary
       class="primary-font"
       style="background-color: #f4f4f4;">
-      <v-list :items="items"></v-list>
+      <v-list
+        :items="items"
+        :selected="selected"
+        @click:select="navigateToPage"></v-list>
     </v-navigation-drawer>
 
     <v-navigation-drawer
@@ -69,15 +85,16 @@
           density="compact"></v-text-field>
       </div>
     </v-navigation-drawer>
-
-    <v-main>
-      <slot></slot>
-    </v-main>
   </div>
 </template>
 
 <script setup>
   import { ref } from 'vue';
+  import { useRouter } from 'vue-router'
+  import breadcrumbNav from '../breadcrumb/breadcrumbNav.vue';
+
+
+  const router = useRouter();
 
   const drawer = ref(false);
   const search = ref(false);
@@ -87,21 +104,28 @@
   const items = ref( [
       {
           title: 'Ropa',
-          value: 'foo',
+          value: 'ropaFirstPage',
       },
       {
           title: 'Libros',
-          value: 'bar',
+          value: 'librosFirstPage',
       },
-      {
-          title: 'Accesorios',
-          value: 'fizz',
-      },
+      // {
+      //     title: 'Accesorios',
+      //     value: 'fizz',
+      // },
       {
           title: 'Contacto',
-          value: 'buzz',
+          value: 'contactoFirstPage',
       },
   ]);
+
+  const selected = ref(null);
+
+  const navigateToPage = (item) => {
+    const {id} = item;
+    router.push({name:id})
+  };
 </script>
 
 <style lang="scss" scoped>
@@ -141,6 +165,8 @@
         .main-nav {
         	margin-top: 5px;
           font-size:x-large;
+          z-index: 1000;
+          cursor: pointer;
         }
         .logo a,
         .main-nav a {
