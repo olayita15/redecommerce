@@ -27,7 +27,7 @@
               <div class="product-price mt-5 primary-font">
                 <div class="d-flex flex-column jusify-center align-start">
                   <span>
-                    COP <b>{{ formatPrice(cardData?.price-4000) || '' }}</b>
+                    COP <b>{{ formatPrice(cardData?.price+4000) || '' }}</b>
                   </span> 
                 </div>
               </div>
@@ -148,7 +148,6 @@
       color: #fff;
       border-radius: 7px;
       // box-shadow: -10px 20px 15px -10px rgba(17, 233, 91, 0.3);
-
       .product-price-label{
         font-size: 15px;
         margin: 0;
@@ -186,45 +185,43 @@
       }
     }
   }
-    // .card-actions{
-    //     display: none;
-    // }
-      .card-image {
-        background-size: cover;
-        height: 100%;
-        transition: transform 0.3s ease-in-out;
-      }
 
-      .card:hover .card-image {
-        transform: scale(1.1);
-      }
-      .card:hover .card-actions{
-        display: flex;
-        flex-flow: row nowrap;
-        justify-items: center;
-        align-items: center;
-      }
+  .card-image {
+    background-size: cover;
+    height: 100%;
+    transition: transform 0.3s ease-in-out;
+  }
 
-      @media (max-width: 1200px) {
-        .card-box{
-          width: $relative_width - 95px;
-        }
-        .card{
-          width: $relative_width - 95px;
-          height: $relative_height - 95px;
-        }
-        .title-font{
-          font-size: small;
-          text-wrap: wrap;
-        }
-        .author-font{
-          font-size: x-small;
-        }
+  .card:hover .card-image {
+    transform: scale(1.1);
+  }
+  .card:hover .card-actions{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-items: center;
+    align-items: center;
+  }
+
+  @media (max-width: 1200px) {
+    .card-box{
+      width: $relative_width - 110px;
+    }
+    .card{
+      width: $relative_width - 110px;
+      height: $relative_height - 110px;
+    }
+    .title-font{
+      font-size: 7px;
+      text-wrap: pretty;
+    }
+    .author-font{
+      font-size: 5px;
+    }
 
   .product-price-box {
     .product-price {
-      padding: 0 5px;
-      font-size: 18px;
+      padding: 0 2px;
+      font-size: 9px;
       font-weight: 100;
       .product-price-label{
         font-size: 10px;
@@ -234,13 +231,13 @@
 
   .product-descount-box {
     .product-price {
-      padding: 0 5px;
-      font-size: 15px;
+      padding: 0 2px;
+      font-size: 7px;
       font-weight: 100;
       .product-descount-label{
         font-size: 10px;
       }
     }
   }
-    }
+}
 </style>
