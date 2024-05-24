@@ -25,9 +25,9 @@
         <section class="et-hero-tabs-menu primary-font pb-10">
             <div class="et-hero-tabs-container">
             <a class="et-hero-tab" @click="scrollToComponente('tab-descuentos')">Descuentos</a>
+            <a class="et-hero-tab" >Lo más buscado</a>
             <a class="et-hero-tab" @click="scrollToComponente('tab-flexbox')">Ropa</a>
             <a class="et-hero-tab" @click="scrollToComponente('tab-react')">Libros</a>
-            <!-- <a class="et-hero-tab" href="#tab-angular">Angular</a> -->
             <a class="et-hero-tab" @click="scrollToComponente('tab-other')">Contacto</a>
             <span class="et-hero-tab-slider"></span>
         </div>
@@ -36,15 +36,17 @@
         <main class="et-main primary-font">
             <section class="et-slide" id="tab-descuentos">
                 <h1>Descuentos</h1>
-                <div class="d-flex flex-row flex-wrap justify-space-around align-center my-5">
+                <div class="d-flex flex-row flex-wrap justify-space-around align-start my-5">
                     <div
                     v-for="(data, index) in genericCardDataArray"
                     :key="index">
-                        <!-- <generic-card class="generic-desktop-card" :genericCardData="data" /> -->
-                        <!-- <genericMobileCard class="generic-mobile-card" :genericCardData="data" /> -->
                         <simple-card class="generic-mobile-card" :cardData="data" />
                     </div>
                 </div>
+            </section>
+            <section class="et-slide" id="tab-angular">
+            <h1>Lo más buscado</h1>
+            <h3>something about angular</h3>
             </section>
             <section class="et-slide clothes-section" id="tab-flexbox">
                 <h1>Sección de ropa</h1>
@@ -59,10 +61,6 @@
                 <h1>Sección de libros</h1>
                 <h3>Formación permanente, crítica constante.</h3>
             </section>
-            <!-- <section class="et-slide" id="tab-angular">
-            <h1>Angular</h1>
-            <h3>something about angular</h3>
-            </section> -->
             <section class="et-slide contact-section" id="tab-other" >
             <h1 style="cursor: pointer;">Contacto</h1>
             <h3>¿Quieres saber más de nosotros?</h3>
@@ -74,9 +72,6 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 
-import background1Carrousel from '../../../assets/images/carrouselPrincipal/Background1Carrousel.webp';
-
-import genericCard from '../../../components/generalCards/genericCard.vue';
 import simpleCard from '../../ropa/components/simpleCard.vue';
 import principalCarrousel from '../components/molecular/principalCarrousel.vue';
 import camisetaAdelanteFidelCastro from '@/assets/images/carrouselPrincipal/camisetaAdelanteFidelCastro_1.webp';
@@ -128,6 +123,7 @@ const genericCardDataArray = ref([
       rating: 4.5,
       reviews: 413,
       price: 30000,
+      descount: true,
       description: 'Expresa tu apoyo a la revolución con esta elegante camiseta de temática comunista.',
       availability: ['XS', 'S', 'M', 'L', 'XL'],
       image: 'https://acdn.mitiendanube.com/stores/605/358/products/37n1-48054e5e8a19c7b9f716249053342208-640-0.png',
@@ -135,16 +131,17 @@ const genericCardDataArray = ref([
       logo: 'https://upload.wikimedia.org/wikipedia/commons/b/b7/Juco.jpg'
     },
     {
-      title: 'Discusiones marxistas para la revolución en Colombia',
-      author: 'Juan Sebastián Cristancho Rojas',
+      title: 'Manifiesto Comunista (Edición especial)',
+      author: 'Karl Marx & Federich Engels',
       iconColor: 'red',
       icon: 'mdi-fire-circle',
       rating: 4.7,
       reviews: 200,
       price: 29999,
+      descount: true,
       description: 'Mantente abrigado y con estilo con esta acogedora sudadera que promueve la unidad de los trabajadores.',
       availability: ['Teoría & Praxis'],
-      image: "https://www.progresando.com/wp-content/uploads/2023/06/KesaneMX-Manifiesto-comunista-El-Karl-Marx-Engeles-GL-EMU.fw_.png",
+      image: "https://images.cdn3.buscalibre.com/fit-in/360x360/b5/66/b56627955ecc97a23578bbf08e770d32.jpg",
       category: 'libro',
       logo: 'https://semanariovoz.com/wp-content/uploads/2015/04/09/teopraxisplano21.gif'
     },
@@ -156,76 +153,40 @@ const genericCardDataArray = ref([
       rating: 4.5,
       reviews: 180,
       price: 49999,
+      descount: true,
       description: 'Difunde el mensaje de igualdad y solidaridad con esta versátil mochila.',
       availability: ['Rojo','Negro'],
       image: 'https://images.creativefabrica.com/products/thumbnails/2023/09/04/tYvYxGtKe/2Uv67oT2m9vDEgyUCWGHyZy4kLZ.png',
       category: 'accesorio',
       logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Coat_of_arms_of_the_Soviet_Union_%281923%E2%80%931936%29.svg/181px-Coat_of_arms_of_the_Soviet_Union_%281923%E2%80%931936%29.svg.png'
     },
-
+    
+    {
+      title: 'Camiseta de fútbol Palestina',
+      author: 'Resistencia',
+      iconColor: 'red',
+      icon: 'mdi-fire-circle',
+      rating: 4.5,
+      reviews: 413,
+      price: 40000,
+      descount: true,
+      description: 'Expresa tu apoyo a la revolución con esta elegante camiseta de temática comunista.',
+      availability: ['XS', 'S', 'M', 'L', 'XL'],
+      image: 'https://img.mrvcdn.com/g/fb/kf/Ee4c7694269d24771bd769a9a0d791eb7S.png',
+      category: 'ropa',
+      logo: 'https://upload.wikimedia.org/wikipedia/commons/b/b7/Juco.jpg'
+    },
   ]);
-// function onTabClick(event, element) {
-//   event.preventDefault();
-//   const href = element.getAttribute('href');
-//   const scrollTop = $(href).offset().top - tabContainerHeight.value + 1;
-//   $('html, body').animate({ scrollTop }, 600);
-// }
 
-// function checkTabContainerPosition() {
-//   const offset = $('.et-hero-tabs').offset().top + $('.et-hero-tabs').height() - tabContainerHeight.value;
-//   if ($(window).scrollTop() > offset) {
-//     $('.et-hero-tabs-container').addClass('et-hero-tabs-container--top');
-//   } else {
-//     $('.et-hero-tabs-container').removeClass('et-hero-tabs-container--top');
-//   }
-// }
-
-// function findCurrentTabSelector() {
-//   let newCurrentId;
-//   let newCurrentTab;
-
-//   $('.et-hero-tab').each(function () {
-//     const id = $(this).attr('href');
-//     const offsetTop = $(id).offset().top - tabContainerHeight.value;
-//     const offsetBottom = $(id).offset().top + $(id).height() - tabContainerHeight.value;
-
-//     if ($(window).scrollTop() > offsetTop && $(window).scrollTop() < offsetBottom) {
-//       newCurrentId = id;
-//       newCurrentTab = $(this);
-//     }
-//   });
-
-//   if (currentId.value !== newCurrentId || currentId.value === null) {
-//     currentId.value = newCurrentId;
-//     currentTab.value = newCurrentTab;
-//     setSliderCss();
-//   }
-// }
-
-// function setSliderCss() {
-//   if (!currentTab.value) return; // Handle potential null reference
-
-//   const width = currentTab.value.css('width');
-//   const left = currentTab.value.offset().left;
-
-//   $('.et-hero-tab-slider').css('width', width);
-//   $('.et-hero-tab-slider').css('left', left);
-// }
-
-// onMounted(() => {
-//   $(document).on('click', '.et-hero-tab', onTabClick);
-//   $(window).scroll(checkTabContainerPosition);
-//   $(window).resize(findCurrentTabSelector);
-// });
-
-// onBeforeUnmount(() => {
-//   $(document).off('click', '.et-hero-tab', onTabClick);
-//   $(window).off('scroll', checkTabContainerPosition);
-//   $(window).off('resize', findCurrentTabSelector);
-// });
 </script>
 
 <style lang="scss" scoped>
+.et-main{
+    min-height: 500vh;
+    padding-top: 50px;
+    background: #eee;
+}
+
 .slider-box{
     display: flex;
     flex-flow: column nowrap;
@@ -320,11 +281,11 @@ a {
     position: relative;
     background: #eee;
     text-align: center;
-    padding: 0 2em;
+    padding: 1em 2em;
     h1 {
         font-size: 2rem;
         margin: 0;
-        letter-spacing: 1rem;
+        letter-spacing: 5px;
     }
     h3 {
         font-size: 1rem;
@@ -358,6 +319,7 @@ a {
     letter-spacing: 0.1rem;
     transition: all 0.5s ease;
     font-size: 0.8rem;
+    cursor: pointer;
 	    &:hover {
 			color:white;
             background: rgba(241, 111, 102, 0.8);
@@ -379,6 +341,10 @@ a {
 }
 .contact-section{
     background-color: #66b0f125;
+}
+
+.generic-mobile-card{
+        margin: 0 0;
 }
 @media (min-width: 800px) {
 
@@ -403,10 +369,10 @@ a {
     }
 
 	.et-slide {
-    height: 100vh;
+    min-height: 100vh;
 
     h1 {
-        font-size: 3rem;
+        font-size: 5rem;
     }
     h3 {
         font-size: 1rem;
@@ -415,5 +381,8 @@ a {
 	.et-hero-tab {
 		font-size: 1rem;
 	}
+    .generic-mobile-card{
+        margin: 0 25px;
+    }
 }
 </style>

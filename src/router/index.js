@@ -7,24 +7,24 @@ import contactoRouter from "../modules/contacto/router";
 
 const routes = [
   {
-    path: '/redecommerce/',
+    path: '',
     name: 'dashboard',
-    meta: {title:'Inicio', redirection: 'homeFirstPage'},
+    meta: { title: 'Inicio', redirection: 'homeFirstPage' },
     component: () => import('@/layouts/mainLayout.vue'),
     children: [
       {
         ...inicioRouter
       },
       {
-        path: '/redecommerce/ropa/',
+        path: '/ropa/',
         ...ropaRouter
       },
       {
-        path: '/redecommerce/libros/',
+        path: '/libros/',
         ...libroRouter
       },
       {
-        path: '/redecommerce/contacto/',
+        path: '/contacto/',
         ...contactoRouter
       },
     ]

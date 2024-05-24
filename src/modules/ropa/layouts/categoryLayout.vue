@@ -2,8 +2,8 @@
     <v-card class="primary-font">
       <v-layout>
         <v-main>
-          <v-container fluid class="pa-0 ma-0" grid-list-xs>
-            <v-container fluid class="pa-0 ma-0">
+          <v-container fluid class="pa-0 ma-0 elevation-0" grid-list-xs>
+            <v-container fluid class="pa-0 ma-0 elevation-0">
               <div class="d-flex flex-column">
                 <router-view v-slot="{ Component, route }">
                   <transition name="slide-fade" mode="out-in">
@@ -11,8 +11,9 @@
                   </transition>
                 </router-view>
               </div>
-            </v-container> </v-container
-        ></v-main>
+            </v-container> 
+          </v-container>
+        </v-main>
       </v-layout>
     </v-card>
   </template>

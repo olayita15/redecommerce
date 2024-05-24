@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex flex-column justify-center align-center">
-    <span class="primary-font">{{ slides[index]?.title }}</span>
+    <span class="autor-font-regular">{{ slides[index]?.title }}</span>
     <v-carousel :show-arrows="false" cycle hide-delimiters class="circular-box justify-content-start ma-0 pa-0 mx-5" @update:modelValue="handleIndex">
       <v-carousel-item
         v-for="(item,i) in slides"

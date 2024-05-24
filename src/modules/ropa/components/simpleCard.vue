@@ -1,15 +1,6 @@
 <template>
   <div>
-    <div class="d-flex flex-column justify-center align-center my-5" @click="pushRoute(cardData)">
-      <span
-        class="primary-title-font title-font title-position"
-        >{{ cardData.title|| 'Card title' }}</span
-      >
-      <span
-        class="autor-font-regular"
-        >{{ cardData.author|| 'Card author' }}</span
-      >
-
+    <div class="d-flex flex-column justify-center align-center my-5 card-box" @click="pushRoute(cardData)">
       <v-card
         class="mx-auto card d-flex flex-column"
         :image="cardData.image || 'https://cdn.vuetifyjs.com/images/cards/docks.jpg'"
@@ -31,11 +22,27 @@
         </v-btn> -->
 
           <v-spacer></v-spacer>
-          <div class="product-price-box mt-4 text-subtitle-1 primary-font"
-            ><span class="product-price mt-5 primary-font">
-              COP <b>{{ formatPrice(cardData?.price) || '' }}</b>
-            </span></div
-          >
+          <div class="d-flex flex-column justify-center">
+            <div v-if="cardData?.descount" class="product-descount-box mt-4 text-subtitle-1 primary-font">
+              <div class="product-price mt-5 primary-font">
+                <div class="d-flex flex-column jusify-center align-start">
+                  <span>
+                    COP <b>{{ formatPrice(cardData?.price-4000) || '' }}</b>
+                  </span> 
+                </div>
+              </div>
+            </div>
+            <div class="product-price-box text-subtitle-1 primary-font">
+                  <span class="product-price primary-font">
+                    <div class="d-flex flex-column jusify-center align-start">
+                      <span>
+                        COP <b>{{ formatPrice(cardData?.price) || '' }}</b> 
+                      </span>
+                    </div>
+                  </span>
+            </div>
+          </div>
+          
           <!-- <v-btn
         class="mt-8"
           color="blue-lighten-2"
@@ -52,7 +59,19 @@
             </v-card-text>
           </div>
         </v-expand-transition>
+
       </v-card>
+      <div class="primary-font title-font title-position">
+        <span>
+        {{ cardData.title|| 'Card title' }}
+        </span>
+      </div>
+
+      <div class="autor-font-regular author-font author-position">
+        <span>
+          {{ cardData.author|| 'Card author' }}
+        </span>
+      </div>
     </div>
   </div>
 </template>
@@ -90,32 +109,83 @@
 </script>
 
 <style lang="scss" scoped>
+  $relative_width: 250px;
+  $relative_height: $relative_width + 50px;
+
+  .card-box{
+    width: $relative_width;
+  }
   .card{
-    min-width: 300px;
-    height: 350px;
+    width: $relative_width;
+    height: $relative_height;
+    border-radius: 8px;
   }
   .title-font{
-    font-size: x-large;
+    font-size: medium;
+    text-wrap: nowrap;
   }
   .title-position{
-    text-align: center;
+    align-self: flex-start;
+  }
+  .author-font{
+    font-size: small;
+    text-wrap: nowrap;
+  }
+  .author-position{
+    align-self: flex-start;
   }
   .product-price-box {
-            justify-self: center;
-            align-self: flex-start;
-            .product-price {
-              background: #042c38fa;
-              padding: 7px 20px;
-              text-align: center;
-              display: inline-block;
-              font-size: 24px;
-              font-weight: 200;
-              color: #fff;
-              border-radius: 7px;
-              box-shadow: -10px 20px 15px -10px rgba(17, 233, 91, 0.3);
+    justify-self: center;
+    align-self: flex-start;
+    z-index: -1;
+    .product-price {
+      background: #042c38fa;
+      padding: 0 10px;
+      text-align: center;
+      display: inline-block;
+      font-size: 23px;
+      font-weight: 200;
+      color: #fff;
+      border-radius: 7px;
+      // box-shadow: -10px 20px 15px -10px rgba(17, 233, 91, 0.3);
 
-            }
-          }
+      .product-price-label{
+        font-size: 15px;
+        margin: 0;
+        padding: 0;
+        margin-bottom: -10px;
+      }
+    }
+  }
+
+  .product-descount-box {
+    justify-self: center;
+    align-self: flex-end;
+    margin-bottom: -5px;
+    .product-price {
+      background: #38042be3;
+      padding: 0 7px;
+      text-align: center;
+      display: inline-block;
+      font-size: 20px;
+      font-weight: 100;
+      color: #fff;
+      border-radius: 7px;
+      // box-shadow: -10px 20px 15px -10px rgba(17, 233, 91, 0.3);
+      z-index: 0;
+      .product-descount-label{
+        font-size: 15px;
+        margin: 0;
+        padding: 0;
+        margin-bottom: -10px;
+      }
+
+      b{
+        text-decoration: line-through;
+        font-style: italic;
+      }
+    }
+  }
     // .card-actions{
     //     display: none;
     // }
@@ -136,12 +206,41 @@
       }
 
       @media (max-width: 1200px) {
+        .card-box{
+          width: $relative_width - 95px;
+        }
         .card{
-          min-width: 200px;
-          height: 250px;
+          width: $relative_width - 95px;
+          height: $relative_height - 95px;
         }
         .title-font{
-        font-size: large;
+          font-size: small;
+          text-wrap: wrap;
+        }
+        .author-font{
+          font-size: x-small;
+        }
+
+  .product-price-box {
+    .product-price {
+      padding: 0 5px;
+      font-size: 18px;
+      font-weight: 100;
+      .product-price-label{
+        font-size: 10px;
       }
+    }
+  }
+
+  .product-descount-box {
+    .product-price {
+      padding: 0 5px;
+      font-size: 15px;
+      font-weight: 100;
+      .product-descount-label{
+        font-size: 10px;
+      }
+    }
+  }
     }
 </style>
