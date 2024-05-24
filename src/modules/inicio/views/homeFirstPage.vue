@@ -2,7 +2,9 @@
     <div>
         <!-- Hero -->
         <div class="et-hero-tabs">
-            <v-carousel class="h-100 w-100" cycle :show-arrows="false" hide-delimiters style="background:url('https://assets.editorial.aetnd.com/uploads/2019/10/communism-socialism-gettyimages-986270630.jpg');">
+            <v-carousel class="h-100 w-100" cycle continuous :interval="12000"
+            hide-delimiter-background touch
+            :show-arrows="false" hide-delimiters style="background:url('https://assets.editorial.aetnd.com/uploads/2019/10/communism-socialism-gettyimages-986270630.jpg');">
                 <v-carousel-item
                 v-for="(item,i) in items"
                 :key="i"
@@ -16,7 +18,10 @@
                         <v-btn class="primary-font btn" @click="scrollToComponente('tab-descuentos')">Ver más</v-btn>
                     </div>
                     <div v-if="i===1" class="slider-box ">
-                        <principal-carrousel :slides="slides" />
+                        <h1>Memoria Histórica</h1>
+                        <h3 class="primary-font">A través de la moda.</h3>
+                        <h2 class="secondary-title-font">Tienda Roja.</h2>
+                        <v-btn class="primary-font btn" @click="scrollToComponente('tab-memoria-historica')">Ver más</v-btn>
                     </div>
                 </v-carousel-item>
             </v-carousel>
@@ -25,8 +30,8 @@
         <section class="et-hero-tabs-menu primary-font pb-10">
             <div class="et-hero-tabs-container">
             <a class="et-hero-tab" @click="scrollToComponente('tab-descuentos')">Descuentos</a>
-            <a class="et-hero-tab" >Lo más buscado</a>
-            <a class="et-hero-tab" @click="scrollToComponente('tab-flexbox')">Ropa</a>
+            <!-- <a class="et-hero-tab" @click="scrollToComponente('lo-mas-buscado')">Lo más buscado</a> -->
+            <a class="et-hero-tab" @click="scrollToComponente('tab-flexbox')">Memoria Histórica</a>
             <a class="et-hero-tab" @click="scrollToComponente('tab-react')">Libros</a>
             <a class="et-hero-tab" @click="scrollToComponente('tab-other')">Contacto</a>
             <span class="et-hero-tab-slider"></span>
@@ -44,12 +49,12 @@
                     </div>
                 </div>
             </section>
-            <section class="et-slide" id="tab-angular">
+            <!-- <section class="et-slide" id="lo-mas-buscado">
             <h1>Lo más buscado</h1>
             <h3>something about angular</h3>
-            </section>
-            <section class="et-slide clothes-section" id="tab-flexbox">
-                <h1>Sección de ropa</h1>
+            </section> -->
+            <section class="et-slide clothes-section" id="tab-memoria-historica">
+                <h1>Memoria Histórica</h1>
                 <h3>Si los medios no informan, nuestra moda lo hará.</h3>
                 <div class="d-flex flex-wrap justify-space-around align-center my-5">
                     <principal-carrousel class="my-5" :slides="slides" />
@@ -90,29 +95,69 @@ const items = ref([
     {
         src: 'https://assets.editorial.aetnd.com/uploads/2019/10/communism-socialism-gettyimages-986270630.jpg',
     },
-    // {
-    //     src: 'https://i.pinimg.com/originals/09/65/c4/0965c438eca27e14778069349b285b81.jpg',
-    // },
+    {
+        src: 'https://pacifista.tv/wp-content/uploads/2018/09/maria3.jpg',
+    },
 ]);
 
 const slides = ref([
     { src: camisetaAdelanteFidelCastro, title: 'Camiseta Revolución Cubana (Frente)', 
-    slug: 'camiseta-revolucion-comunista', category: 'camisetas' },
+    slug: 'camiseta-revolucion-comunista', category: 'camisetas',
+    background: 'https://st2.depositphotos.com/1017251/9439/i/450/depositphotos_94394106-stock-photo-items-related-to-cuba-travel.jpg'},
     { src: camisetaDetrasFidelCastro, title: 'Camiseta Revolución Cubana (Detrás)', 
-    slug: 'camiseta-revolucion-comunista', category: 'camisetas' },
+    slug: 'camiseta-revolucion-comunista', category: 'camisetas',
+    background: 'https://st2.depositphotos.com/1017251/9439/i/450/depositphotos_94394106-stock-photo-items-related-to-cuba-travel.jpg' },
 ]);
 
 const slides2 = ref([
     { src: 'https://cdnx.jumpseller.com/palestino/image/45458410/resize/255/255?1707767558', 
-    title: 'Camiseta de fútbol Palestina (Negra)' },
+    title: 'Camiseta de fútbol Palestina (Negra)',
+    background: 'https://www.kodromagazine.com/wp-content/uploads/2021/09/DpUg-f_W0AM2c1u.jpg' },
     { src: 'https://i.ebayimg.com/images/g/~zYAAOSw9l5jiby7/s-l1200.webp', 
-    title: 'Camiseta de fútbol Palestina (Blanca)' }
+    title: 'Camiseta de fútbol Palestina (Blanca)',
+    background: 'https://elcuartomosquetero.com/wp-content/uploads/2024/02/Imagen2.jpg' }
 ]);
 
 const slides3 = ref([
-    { src: 'https://i.ebayimg.com/images/g/BQYAAOSwNjhjDgmN/s-l1200.webp', title: 'Camiseta Angela Davis (Rosa)' },
-    { src: 'https://blackpeopleunitedclothing.com/cdn/shop/products/5e259abf944b991e50a3d125a89a3e29_800x.png?v=1642227361', title: 'Camiseta Angela Davis (Azul)' }
+    { src: 'https://i.ebayimg.com/images/g/BQYAAOSwNjhjDgmN/s-l1200.webp', title: 'Camiseta Angela Davis (Rosa)',
+    background: 'https://cdn.britannica.com/70/217070-050-250699A2/Black-Lives-Matter-protest-signs-Boston-Massachusetts-May-2020.jpg' },
+    { src: 'https://blackpeopleunitedclothing.com/cdn/shop/products/5e259abf944b991e50a3d125a89a3e29_800x.png?v=1642227361', title: 'Camiseta Angela Davis (Azul)',
+    background:'https://static01.nyt.com/images/2022/05/18/business/17BLM-foundation-01/merlin_188274429_b5690cad-989a-4f2f-8741-2961afb01632-superJumbo.jpg' }
 ]);
+
+const genericCardArray = ref([
+    {
+      title: 'Camiseta Revolución Comunista',
+      author: 'Ernesto Ché Guevara',
+      iconColor: 'red',
+      icon: 'mdi-fire-circle',
+      rating: 4.5,
+      reviews: 413,
+      price: 30000,
+      descount: true,
+      description: 'Expresa tu apoyo a la revolución con esta elegante camiseta de temática comunista.',
+      availability: ['XS', 'S', 'M', 'L', 'XL'],
+      image: 'https://acdn.mitiendanube.com/stores/605/358/products/37n1-48054e5e8a19c7b9f716249053342208-640-0.png',
+      category: 'ropa',
+      logo: 'https://upload.wikimedia.org/wikipedia/commons/b/b7/Juco.jpg'
+    },
+    {
+      title: 'Manifiesto Comunista (Edición especial)',
+      author: 'Karl Marx & Federich Engels',
+      iconColor: 'red',
+      icon: 'mdi-fire-circle',
+      rating: 4.7,
+      reviews: 200,
+      price: 29999,
+      descount: true,
+      description: 'Mantente abrigado y con estilo con esta acogedora sudadera que promueve la unidad de los trabajadores.',
+      availability: ['Teoría & Praxis'],
+      image: "https://images.cdn3.buscalibre.com/fit-in/360x360/b5/66/b56627955ecc97a23578bbf08e770d32.jpg",
+      category: 'libro',
+      logo: 'https://semanariovoz.com/wp-content/uploads/2015/04/09/teopraxisplano21.gif'
+    },
+   
+  ]);
 
 const genericCardDataArray = ref([
     {
@@ -196,7 +241,7 @@ const genericCardDataArray = ref([
     width: 100%;
     height: 100%;
     h1 {
-        font-size: 2rem;
+        font-size: 12px;
         text-transform: uppercase;
         margin: 0;
         color: #fff1f1;
@@ -204,14 +249,14 @@ const genericCardDataArray = ref([
     }
     h2 {
         color: #fff1f1;
-        font-size: 1rem;
-        letter-spacing: 0.3rem;
+        font-size: 8px;
+        letter-spacing: 0.1rem;
         opacity: 0.6;
         margin: 10px 0;
     }
     h3 {
         color: #fff1f1;
-        font-size: 1rem;
+        font-size: 8px;
         letter-spacing: 0.3rem;
         opacity: 0.6;
     }
@@ -233,7 +278,7 @@ a {
     // flex-direction: column;
     // justify-content: center;
     // align-items: center;
-    height: 100vh;
+    height: 130vh;
     position: relative;
     background: #eee;
 		text-align: center;
@@ -318,7 +363,7 @@ a {
     color: #000;
     letter-spacing: 0.1rem;
     transition: all 0.5s ease;
-    font-size: 0.8rem;
+    font-size: 0.4rem;
     cursor: pointer;
 	    &:hover {
 			color:white;
@@ -355,6 +400,12 @@ a {
             color: #fff1f1;
             font-weight: 700;
         }
+        h2 {
+            color: #fff1f1;
+            font-size: 1.5rem;
+            letter-spacing: 0.3rem;
+            opacity: 0.6;
+        }
         h3 {
             color: #fff1f1;
             font-size: 1.5rem;
@@ -364,19 +415,19 @@ a {
     }
 
 	.et-hero-tabs{
-        max-height: 100vh;
-        height: 100vh;
+        max-height: 120vh;
+        height: 120vh;
     }
 
 	.et-slide {
-    min-height: 100vh;
+        min-height: 100vh;
 
-    h1 {
-        font-size: 5rem;
-    }
-    h3 {
-        font-size: 1rem;
-    }
+        h1 {
+            font-size: 5rem;
+        }
+        h3 {
+            font-size: 1rem;
+        }
 	}
 	.et-hero-tab {
 		font-size: 1rem;

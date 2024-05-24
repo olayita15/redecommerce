@@ -211,11 +211,11 @@
       height: $relative_height - 110px;
     }
     .title-font{
-      font-size: 7px;
+      font-size: 9px;
       text-wrap: pretty;
     }
     .author-font{
-      font-size: 5px;
+      font-size: 7px;
     }
 
   .product-price-box {

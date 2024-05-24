@@ -1,18 +1,26 @@
 <template>
   <div class="d-flex flex-column justify-center align-center">
-    <span class="autor-font-regular">{{ slides[index]?.title }}</span>
-    <v-carousel :show-arrows="false" cycle hide-delimiters class="circular-box justify-content-start ma-0 pa-0 mx-5" @update:modelValue="handleIndex">
+    <v-carousel v-model="index" :show-arrows="false" hide-delimiters :cycle="cycle" :interval="3000"
+    class="circular-box justify-content-start ma-0 pa-0 mx-5" 
+    @update:modelValue="handleIndex"
+    @mouseover="index=1"
+      @mouseleave="index=0">
       <v-carousel-item
         v-for="(item,i) in slides"
         :key="i"
         cover
-        transition="fade-transition"
         >
-        <div class="img-box ma-0 pa-0" @click="goTo(item)">
-          <img :src="item?.src" alt="Imagen Circular" class="circular-image" />
+        <div class="img-box ma-0 pa-0" @click="goTo(item)" >
+          <div class="principal-img-box">
+            <div class="background" :style="{ backgroundImage: `url(${item.background})` }"></div>
+            <img :src="item?.src" alt="Imagen Circular" class="circular-image" />
+          </div>
         </div>
       </v-carousel-item>
     </v-carousel>
+    <div class="d-flex flex-column justify-center align-center">
+      <span class="autor-font-regular title-font">{{ slides[index]?.title }}</span>
+    </div>
   </div>
 </template>
 
@@ -24,6 +32,7 @@
   const props = defineProps(['slides']);
 
   const index = ref(0);
+  const cycle = ref(false);
 
   const handleIndex = (index_data) => {
     index.value = index_data;
@@ -47,10 +56,10 @@
   .circular-box {
     width: 60%; /* Ancho del círculo como un porcentaje de la pantalla */
     height: 60%; /* Altura del círculo como un porcentaje de la pantalla */
-    max-width: 300px; /* Ancho máximo del círculo */
+    width: 300px; /* Ancho máximo del círculo */
     max-height: 300px; /* Altura máxima del círculo */
-    border-radius: 50%; /* Hace que el div sea circular */
-    // border: 10px groove #1818182d; /* Borde del círculo */
+    border-radius: 10%; /* Hace que el div sea circular */
+    border: 1px inset #181818; /* Borde del círculo */
     overflow: hidden; /* Oculta el contenido que se sale del círculo */
     // display: flex;
     // justify-content: center;
@@ -64,6 +73,7 @@
   }
 
   .circular-box img.circular-image {
+    position: relative;
     min-width: 300px;
     object-fit: scale-down; /* Ajusta la imagen para cubrir completamente el contenedor */
     border-radius: 50%; /* Garantiza que la imagen sea circular */
@@ -74,6 +84,8 @@
     height: 310px; /* Ajusta la altura deseada */
     margin: 0 auto; /* Centra la imagen horizontalmente */
     display: block;
+    image-rendering: crisp-edges;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     
   }
   .display-desktop{
@@ -81,12 +93,34 @@
   }
 
   .img-box{
+    position: relative;
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
     align-items: center;
     cursor: pointer;
   }
+
+  .circular-image{
+    background: rgba(255, 0, 0, 0.082); /* Red background */
+    transition: transform 0.3s ease-in-out;
+    &:hover {
+      transform: scale(1.4);
+    }
+  }
+
+  .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    filter: sepia(10); /* o cualquier otro filtro que desees aplicar */
+    z-index: 0; /* asegura que esté detrás de la imagen */
+  }
+
 
   @media (max-width: 900px) {
     .carousel-box {

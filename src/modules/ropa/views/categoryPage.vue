@@ -1,10 +1,10 @@
 <template>
   <div style="max-width: 100%; min-height: 400px">
-    <v-row justify="center" align="center" class="elevation-0">
+    <v-row justify="center" align="center" class="elevation-0 ma-0 pa-0">
         <div class="d-flex flex-row flex-wrap justify-center align-center">
-          <v-row justify="center" align="center" class="elevation-0">
-            <v-col class="mx-3" v-for="(data, index) in actualRopajes" :key="index">
-              <v-row justify="center" align="center" class="elevation-0 ma-5">
+          <v-row justify="center" align="center" class="elevation-0 ma-0 pa-0">
+            <v-col class="ma-0 pa-0" v-for="(data, index) in actualRopajes" :key="index">
+              <v-row justify="center" align="center" class="elevation-0 generic-card pa-0">
                 <generic-card :cardData="data"></generic-card>
               </v-row>  
             </v-col>
@@ -35,4 +35,14 @@
 
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.generic-card{
+  margin: 10px 10px;
+}
+
+@media (max-width: 1200px) {
+  .generic-card{
+    margin: 10px 0;
+  }
+}
+</style>
