@@ -223,6 +223,7 @@
       padding: 0 2px;
       font-size: 9px;
       font-weight: 100;
+      border-radius: 3px;
       .product-price-label{
         font-size: 10px;
       }
@@ -230,10 +231,12 @@
   }
 
   .product-descount-box {
+    margin-bottom: -10px;
     .product-price {
       padding: 0 2px;
       font-size: 7px;
       font-weight: 100;
+      border-radius: 3px;
       .product-descount-label{
         font-size: 10px;
       }
