@@ -46,11 +46,11 @@
 </script>
 
 <style lang="scss" scoped>
-  $primary-color-text: $morado-oscuro-paleta;
-  $secondary-color-text: $morado-semi-claro-paleta;
-  $third-color-text: $morado-claro-paleta;
-  $primary-color-background: $gris-paleta;
-  $secondary-color-background: $blanco-paleta;
+  $primary-color-text: $fifth-color;
+  $secondary-color-text: $fourth-color;
+  $third-color-text: $third-color;
+  $primary-color-background: $second-color;
+  $secondary-color-background: $first-color;
   
   .title-font{
     color: $secondary-color-text;

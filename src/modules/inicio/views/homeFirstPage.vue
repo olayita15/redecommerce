@@ -41,6 +41,18 @@
         <main class="et-main primary-font blanco-paleta-background">
             <v-container>
                 <v-row>
+                    <v-col cols="12">
+                        <section class="et-slide" id="tab-descuentos">
+                            <v-row class="my-3" justify="space-around" align="center">
+                                <v-img class="pago-img mx-5" src="https://seeklogo.com/images/N/nequi-colombia-logo-CF8C45C51E-seeklogo.com.png"></v-img>
+                                <v-img class="pago-img mx-5" src="https://seeklogo.com/images/D/daviplata-logo-750F0FC1B7-seeklogo.com.png"></v-img>
+                                <v-img class="pago-img mx-5" src="https://seeklogo.com/images/I/inter-rapidisimo-logo-9D6D9D1E45-seeklogo.com.png"></v-img>
+                                
+                            </v-row>
+                        </section>
+                    </v-col>
+                </v-row>
+                <v-row>
                     <v-col>
                         <section class="et-slide" id="tab-descuentos">
                             <div class="d-flex justify-center align-center">
@@ -250,69 +262,18 @@ const genericCardDataArray = ref([
 </script>
 
 <style lang="scss" scoped>
-$primary-color-text: $blanco-paleta;
-$secondary-color-text: rgba($morado-semi-claro-paleta, 0.7);
-$third-color-text: $morado-oscuro-paleta;
-$primary-color-background: $gris-paleta;
+$primary-color-text: $first-color;
+$secondary-color-text: rgba($fourth-color, 0.7);
+$third-color-text: $fifth-color;
+$fourth-color-text: $fourth-color;
+
+$primary-color-background: $second-color;
 
 $primary-title-font-size: 2rem;
 $secondary-title-font-size: 1.5rem;
 $third-title-font-size: 1rem;
 
 $primary-button-padding: 10px;
-
-// Define los breakpoints
-$breakpoints: (
-  'xs': 0,
-  'sm': 600px,
-  'md': 960px,
-  'lg': 1280px,
-  'xl': 1920px,
-);
-
-// Define la base de 1rem en px
-$base-rem: 16px;
-
-// Función para eliminar unidades de un valor
-@function strip-units($value) {
-  @if (unitless($value)) {
-    @return $value;
-  }
-  @return $value / ($value * 0 + 1);
-}
-
-// Función para convertir rem a px
-@function rem-to-px($value) {
-  @if (unit($value) == 'rem') {
-    @return strip-units($value) * $base-rem;
-  }
-  @return $value;
-}
-
-// Función para multiplicar los valores de las variables
-@function multiply-value($value, $factor) {
-  $value-in-px: rem-to-px($value);
-  @if (unitless($value-in-px)) {
-    @return $value-in-px * $factor;
-  } @else {
-    $unit: unit($value-in-px);
-    @return (strip-units($value-in-px) * $factor) + $unit;
-  }
-}
-
-@mixin responsive-values($property, $value) {
-  @each $breakpoint, $size in $breakpoints {
-    @if $breakpoint == 'xs' {
-      #{$property}: rem-to-px($value);
-    } @else {
-      @media (min-width: $size) {
-        #{$property}: multiply-value($value, $size / map-get($breakpoints, 'sm'));
-      }
-    }
-  }
-}
-
-
 
     .principal-slider-box{
         display: flex;
@@ -362,7 +323,7 @@ $base-rem: 16px;
     .et-hero-tabs-menu{
         height: 5vh;
         position: relative;
-        background: $gris-paleta;
+        background: $second-color;
         text-align: center;
 
         .et-hero-tabs-container {
@@ -410,7 +371,7 @@ $base-rem: 16px;
             font-size: $primary-title-font-size;
             margin: 0;
             letter-spacing: 1px;
-            color: $secondary-color-text;
+            color: $fourth-color-text;
         }
         h3 {
             font-size: $third-title-font-size;
@@ -423,6 +384,9 @@ $base-rem: 16px;
             flex-flow: row wrap;
             justify-content: space-around;
             align-items: flex-start;
+        }
+        .pago-img{
+            width: 100px;
         }
     }
 };
@@ -468,6 +432,9 @@ $base-rem: 16px;
                 .box-card{
                     margin: 10px 15px;
                 }
+            }
+            .pago-img{
+                width: 75px;
             }
         }
     };
@@ -518,6 +485,9 @@ $base-rem: 16px;
                     margin: 10px 15px;
                 }
             }
+            .pago-img{
+                width: 150px;
+            }
         }
     };
 }
@@ -563,6 +533,9 @@ $base-rem: 16px;
                 .box-card{
                     margin: 15px 20px;
                 }
+            }
+            .pago-img{
+                width: 200px;
             }
         }
     };
@@ -610,6 +583,9 @@ $base-rem: 16px;
                     margin: 10px 15px;
                 }
             }
+            .pago-img{
+                width: 250px;
+            }
         }
     };
 }
@@ -655,6 +631,9 @@ $base-rem: 16px;
                 .box-card{
                     margin: 15px 20px;
                 }
+            }
+            .pago-img{
+                width: 300px;
             }
         }
     };

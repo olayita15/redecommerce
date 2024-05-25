@@ -129,9 +129,9 @@
 </script>
 
 <style lang="scss" scoped>
-$primary-color-text: $morado-semi-claro-paleta;
-$secondary-color-text: rgba($morado-oscuro-paleta, 0.7);
-$primary-color-background: $gris-paleta;
+$primary-color-text: $fourth-color;
+$secondary-color-text: rgba($fifth-color, 0.7);
+$primary-color-background: $second-color;
 
   .search-drawer{
     display: flex;

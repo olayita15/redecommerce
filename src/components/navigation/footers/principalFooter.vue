@@ -1,11 +1,11 @@
 <template>
   <div class="w-100">
-    <v-footer class="bg-indigo-lighten-1 d-flex flex-column">
+    <v-footer class="d-flex flex-column footer">
       <div>
         <v-btn
           v-for="icon in icons"
           :key="icon"
-          class="mx-4"
+          class="btn mx-4"
           :icon="icon"
           variant="text"></v-btn>
       </div>
@@ -13,7 +13,7 @@
 
       <v-divider></v-divider>
 
-      <div class="primary-font">
+      <div class="primary-font author-font">
         {{ new Date().getFullYear() }} —
         <strong>Juventud Comunista Colombiana</strong>
       </div>
@@ -31,4 +31,19 @@
           ]);
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+$primary-color-text: $first-color;
+$secondary-color-text: rgba($fourth-color, 0.7);
+$third-color-text: $fifth-color;
+$primary-color-background: $second-color;
+
+.footer{
+  background-color: $primary-color-background;
+  .btn{
+    color: $secondary-color-text;
+  }
+  .author-font{
+    color: $secondary-color-text;
+  }
+}
+</style>
