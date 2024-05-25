@@ -125,6 +125,7 @@
     width: $relative_width;
     height: $relative_height;
     border-radius: 8px;
+    color: $secondary-color-text;
   }
   .title-font{
     font-size: medium;

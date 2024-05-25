@@ -14,13 +14,13 @@
                     <div v-if="i===0" class="slider-box primary-font">
                         <h1 class="third-color-text">Descuentos en ropa y libros</h1>
                         <h3 class="primary-font">Un individuo solo puede hacer poco; unidos podemos hacer mucho.</h3>
-                        <h2 class="secondary-title-font">Tienda Roja.</h2>
+                        <h2 class="secondary-title-font">Tienda Roja</h2>
                         <v-btn class="primary-font btn" @click="scrollToComponente('tab-descuentos')">Ver más</v-btn>
                     </div>
                     <div v-if="i===1" class="slider-box ">
                         <h1 class="third-color-text">Memoria Histórica</h1>
                         <h3 class="primary-font">A través de la moda.</h3>
-                        <h2 class="secondary-title-font">Tienda Roja.</h2>
+                        <h2 class="secondary-title-font">Tienda Roja</h2>
                         <v-btn class="primary-font btn" @click="scrollToComponente('tab-memoria-historica')">Ver más</v-btn>
                     </div>
                 </v-carousel-item>
@@ -32,7 +32,7 @@
                 <a class="et-hero-tab" @click="scrollToComponente('tab-descuentos')">Descuentos</a>
                 <!-- <a class="et-hero-tab" @click="scrollToComponente('lo-mas-buscado')">Lo más buscado</a> -->
                 <a class="et-hero-tab" @click="scrollToComponente('tab-memoria-historica')">Memoria Histórica</a>
-                <a class="et-hero-tab" @click="scrollToComponente('tab-react')">Libros</a>
+                <a class="et-hero-tab" @click="scrollToComponente('tab-react')">Librería</a>
                 <a class="et-hero-tab" @click="scrollToComponente('tab-other')">Contacto</a>
             </div>
         </section>
@@ -43,9 +43,12 @@
                 <v-row>
                     <v-col>
                         <section class="et-slide" id="tab-descuentos">
-                            <h1>Descuentos</h1>
-                            <div class="d-flex flex-row flex-wrap justify-space-around align-start my-5">
+                            <div class="d-flex justify-center align-center">
+                                <h1>Algunos de nuestros productos en descuento</h1>
+                            </div>
+                            <div class="box-cards my-5">
                                 <div
+                                class="box-card"
                                 v-for="(data, index) in genericCardDataArray"
                                 :key="index">
                                     <simple-card class="generic-mobile-card" :cardData="data" />
@@ -58,6 +61,7 @@
                 <h1>Lo más buscado</h1>
                 <h3>something about angular</h3>
                 </section> -->
+                <v-divider class="morado-semi-claro-paleta-text"></v-divider>
                 <v-row>
                     <v-col>
                         <section class="et-slide clothes-section" id="tab-memoria-historica">
@@ -71,14 +75,16 @@
                         </section>
                     </v-col>
                 </v-row>
+                <v-divider class="morado-semi-claro-paleta-text" ></v-divider>
                 <v-row>
                     <v-col>
                         <section class="et-slide" id="tab-react">
-                            <h1>Sección de libros</h1>
+                            <h1>Librería</h1>
                             <h3>Formación permanente, crítica constante.</h3>
                         </section>
                     </v-col>
                 </v-row>
+                <v-divider class="morado-semi-claro-paleta-text"></v-divider>
                 <v-row>
                     <v-col>
                         <section class="et-slide contact-section" id="tab-other" >
@@ -249,6 +255,65 @@ $secondary-color-text: rgba($morado-semi-claro-paleta, 0.7);
 $third-color-text: $morado-oscuro-paleta;
 $primary-color-background: $gris-paleta;
 
+$primary-title-font-size: 2rem;
+$secondary-title-font-size: 1.5rem;
+$third-title-font-size: 1rem;
+
+$primary-button-padding: 10px;
+
+// Define los breakpoints
+$breakpoints: (
+  'xs': 0,
+  'sm': 600px,
+  'md': 960px,
+  'lg': 1280px,
+  'xl': 1920px,
+);
+
+// Define la base de 1rem en px
+$base-rem: 16px;
+
+// Función para eliminar unidades de un valor
+@function strip-units($value) {
+  @if (unitless($value)) {
+    @return $value;
+  }
+  @return $value / ($value * 0 + 1);
+}
+
+// Función para convertir rem a px
+@function rem-to-px($value) {
+  @if (unit($value) == 'rem') {
+    @return strip-units($value) * $base-rem;
+  }
+  @return $value;
+}
+
+// Función para multiplicar los valores de las variables
+@function multiply-value($value, $factor) {
+  $value-in-px: rem-to-px($value);
+  @if (unitless($value-in-px)) {
+    @return $value-in-px * $factor;
+  } @else {
+    $unit: unit($value-in-px);
+    @return (strip-units($value-in-px) * $factor) + $unit;
+  }
+}
+
+@mixin responsive-values($property, $value) {
+  @each $breakpoint, $size in $breakpoints {
+    @if $breakpoint == 'xs' {
+      #{$property}: rem-to-px($value);
+    } @else {
+      @media (min-width: $size) {
+        #{$property}: multiply-value($value, $size / map-get($breakpoints, 'sm'));
+      }
+    }
+  }
+}
+
+
+
     .principal-slider-box{
         display: flex;
         flex-direction: column;
@@ -264,7 +329,7 @@ $primary-color-background: $gris-paleta;
             align-items: center;
             position: absolute;
             h1 {
-                font-size: 2rem;
+                font-size: $primary-title-font-size;
                 margin: 0;
                 text-transform: uppercase;
                 margin: 0;
@@ -273,20 +338,23 @@ $primary-color-background: $gris-paleta;
             }
             h2 {
                 color: $primary-color-text;
-                font-size: 1.5rem;
+                font-size: $secondary-title-font-size;
                 letter-spacing: 0.1rem;
                 opacity: 0.6;
                 margin: 10px 0;
             }
             h3 {
                 color: $primary-color-text;
-                font-size: 1rem;
+                font-size: $third-title-font-size;
                 opacity: 0.6;
             }
             .btn{
                 color: $primary-color-text;
                 margin: 10px 0;
+                padding: $primary-button-padding $primary-button-padding*2;
                 background: $secondary-color-text;
+                font-size: $third-title-font-size;
+                display: flex;
             }
         }
     }
@@ -328,16 +396,6 @@ $primary-color-background: $gris-paleta;
                 }
             }
         }
-        h1 {
-            font-size: 2rem;
-            margin: 0;
-            letter-spacing: 1rem;
-        }
-        h3 {
-            font-size: 1rem;
-            letter-spacing: 0.3rem;
-            opacity: 0.6;
-        }
     }
 
 .et-main{
@@ -349,230 +407,256 @@ $primary-color-background: $gris-paleta;
         position: relative;
         text-align: center;
         h1 {
-            font-size: 2rem;
+            font-size: $primary-title-font-size;
             margin: 0;
-            letter-spacing: 3px;
+            letter-spacing: 1px;
             color: $secondary-color-text;
         }
         h3 {
-            font-size: 1rem;
+            font-size: $third-title-font-size;
             letter-spacing: 0.3rem;
             opacity: 0.6;
             color: $secondary-color-text;
         }
+        .box-cards{
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-around;
+            align-items: flex-start;
+        }
     }
+};
+@media (max-width: 320px) {
+    .principal-slider-box{
+        .slider-box{
+            h1 {
+                font-size: $primary-title-font-size/1.5;
+            }
+            h2 {
+                font-size: $secondary-title-font-size/1.5;
+                letter-spacing: 0.2rem;
+                margin: 10px 0;
+            }
+            h3 {
+                color: $primary-color-text;
+                font-size: $third-title-font-size/1.5;
+            }
+            .btn{
+                margin: $primary-button-padding/1.5 0;
+                padding: $primary-button-padding/1.5 $primary-button-padding;
+                font-size: $third-title-font-size;
+            }
+        }
+    };
+    .et-hero-tabs-menu{
+        .et-hero-tabs-container {
+            height: 40px;
+            .et-hero-tab {
+                font-size: 0.5rem;
+            }
+        }
+    };
+    .et-main{
+        .et-slide {
+            h1 {
+                font-size: $primary-title-font-size/1.5;
+            }
+            h3 {
+                font-size: $third-title-font-size/1.5;
+            }
+            .box-cards{
+                .box-card{
+                    margin: 10px 15px;
+                }
+            }
+        }
+    };
+}
+@media (max-width: 599px) {
+
+}
+@media (min-width: 600px) and (max-width: 959px) {
+    .principal-slider-box{
+        .slider-box{
+            h1 {
+                font-size: $primary-title-font-size*1.5;
+            }
+            h2 {
+                font-size: $secondary-title-font-size*1.5;
+                letter-spacing: 0.2rem;
+                margin: 10px 0;
+            }
+            h3 {
+                color: $primary-color-text;
+                font-size: $third-title-font-size*1.5;
+            }
+            .btn{
+                margin: $primary-button-padding*1.5 0;
+                padding: $primary-button-padding*1.5 $primary-button-padding*3.5;
+                font-size: $third-title-font-size*1;
+            }
+        }
+    };
+    .et-hero-tabs-menu{
+        .et-hero-tabs-container {
+            height: 60px;
+            .et-hero-tab {
+                font-size: 1rem;
+            }
+        }
+    };
+    .et-main{
+        .et-slide {
+            h1 {
+                font-size: $primary-title-font-size*1.5;
+            }
+            h3 {
+                font-size: $third-title-font-size*1.5;
+            }
+            .box-cards{
+                .box-card{
+                    margin: 10px 15px;
+                }
+            }
+        }
+    };
+}
+@media (min-width: 960px) and (max-width: 1279px) {
+    .principal-slider-box{
+        .slider-box{
+            h1 {
+                font-size: $primary-title-font-size*2;
+            }
+            h2 {
+                font-size: $secondary-title-font-size*2;
+                letter-spacing: 0.2rem;
+                margin: 10px 0;
+            }
+            h3 {
+                color: $primary-color-text;
+                font-size: $third-title-font-size*2;
+            }
+            .btn{
+                margin: $primary-button-padding*2 0;
+                padding: $primary-button-padding*2 $primary-button-padding*4;
+                font-size: $third-title-font-size*1.5;
+            }
+        }
+    };
+    .et-hero-tabs-menu{
+        .et-hero-tabs-container {
+            height: 80px;
+            .et-hero-tab {
+                font-size: 1.5rem;
+            }
+        }
+    };
+    .et-main{
+        .et-slide {
+            h1 {
+                font-size: $primary-title-font-size*2;
+            }
+            h3 {
+                font-size: $third-title-font-size*2;
+            }
+            .box-cards{
+                .box-card{
+                    margin: 15px 20px;
+                }
+            }
+        }
+    };
+}
+@media (min-width: 1280px) and (max-width: 1919px) {
+    .principal-slider-box{
+        .slider-box{
+            h1 {
+                font-size: $primary-title-font-size*2.5;
+            }
+            h2 {
+                font-size: $secondary-title-font-size*2.5;
+                letter-spacing: 0.2rem;
+                margin: 10px 0;
+            }
+            h3 {
+                color: $primary-color-text;
+                font-size: $third-title-font-size*2.5;
+            }
+            .btn{
+                margin: $primary-button-padding*2.5 0;
+                padding: $primary-button-padding*2.5 $primary-button-padding*4.5;
+                font-size: $third-title-font-size*1.5;
+            }
+        }
+    };
+    .et-hero-tabs-menu{
+        .et-hero-tabs-container {
+            height: 80px;
+            .et-hero-tab {
+                font-size: 1.5rem;
+            }
+        }
+    };
+    .et-main{
+        .et-slide {
+            h1 {
+                font-size: $primary-title-font-size*2;
+            }
+            h3 {
+                font-size: $third-title-font-size*2;
+            }
+            .box-cards{
+                .box-card{
+                    margin: 10px 15px;
+                }
+            }
+        }
+    };
+}
+@media (min-width: 1920px) {
+    .principal-slider-box{
+        .slider-box{
+            h1 {
+                font-size: $primary-title-font-size*3;
+            }
+            h2 {
+                font-size: $secondary-title-font-size*3;
+                letter-spacing: 0.3rem;
+                margin: 15px 0;
+            }
+            h3 {
+                color: $primary-color-text;
+                font-size: $third-title-font-size*3;
+            }
+            .btn{
+                margin: $primary-button-padding*3 0;
+                padding: $primary-button-padding*3 $primary-button-padding*5;
+                font-size: $third-title-font-size*2;
+            }
+        }
+    };
+    .et-hero-tabs-menu{
+        .et-hero-tabs-container {
+            height: 100px;
+            .et-hero-tab {
+                font-size: 2rem;
+            }
+        }
+    };
+    .et-main{
+        .et-slide {
+            h1 {
+                font-size: $primary-title-font-size*2.5;
+            }
+            h3 {
+                font-size: $third-title-font-size*2.5;
+            }
+            .box-cards{
+                .box-card{
+                    margin: 15px 20px;
+                }
+            }
+        }
+    };
 }
 </style>
-
-<!-- <style lang="scss" scoped>
-.et-main{
-    min-height: 500vh;
-    padding-top: 50px;
-    background: #eee;
-}
-
-.slider-box{
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    h1 {
-        font-size: 12px;
-        text-transform: uppercase;
-        margin: 0;
-        color: #fff1f1;
-        font-weight: 700;
-    }
-    h2 {
-        color: #fff1f1;
-        font-size: 8px;
-        letter-spacing: 0.1rem;
-        opacity: 0.6;
-        margin: 10px 0;
-    }
-    h3 {
-        color: #fff1f1;
-        font-size: 8px;
-        letter-spacing: 0.3rem;
-        opacity: 0.6;
-    }
-    .btn{
-        min-width: 200px;
-        min-height: 50px;
-        color: #fff1f1;
-        margin: 10px 0;
-        background: #66b0f18e;
-    }
-}
-
-a {
-	text-decoration: none;
-}
-
-.et-hero-tabs{
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: center;
-    // align-items: center;
-    height: 130vh;
-    position: relative;
-    background: #eee;
-		text-align: center;
-		// padding: 0 2em;
-    h1 {
-        font-size: 2rem;
-        margin: 0;
-        letter-spacing: 0.5rem;
-    }
-    h3 {
-        font-size: 1rem;
-        letter-spacing: 0.3rem;
-        opacity: 0.6;
-    }
-}
-
-.et-hero-tabs-menu{
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: center;
-    // align-items: center;
-    height: 5vh;
-    position: relative;
-    background: #eee;
-		text-align: center;
-		// padding: 0 2em;
-    h1 {
-        font-size: 2rem;
-        margin: 0;
-        letter-spacing: 1rem;
-    }
-    h3 {
-        font-size: 1rem;
-        letter-spacing: 0.3rem;
-        opacity: 0.6;
-    }
-}
-
-.et-slide {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    position: relative;
-    background: #eee;
-    text-align: center;
-    padding: 1em 2em;
-    h1 {
-        font-size: 2rem;
-        margin: 0;
-        letter-spacing: 5px;
-    }
-    h3 {
-        font-size: 1rem;
-        letter-spacing: 0.3rem;
-        opacity: 0.6;
-    }
-}
-
-.et-hero-tabs-container {
-    display: flex;
-    flex-direction: row;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 70px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    background: #fff;
-    z-index: 10;
-    &--top {
-        position: fixed;
-        top: 0;
-    }
-}
-
-.et-hero-tab {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex: 1;
-    color: #000;
-    letter-spacing: 0.1rem;
-    transition: all 0.5s ease;
-    font-size: 0.4rem;
-    cursor: pointer;
-	    &:hover {
-			color:white;
-            background: rgba(241, 111, 102, 0.8);
-    //   background: rgba(102,177,241,0.8);
-			transition: all 0.5s ease;
-    }
-}
-
-.et-hero-tab-slider {
-    position: absolute;
-    bottom: 0;
-    width: 0;
-    height: 6px;
-    background: #66B1F1;
-    transition: left 0.3s ease;
-}
-.clothes-section{
-    background-color: #66b0f125;
-}
-.contact-section{
-    background-color: #66b0f125;
-}
-
-.generic-mobile-card{
-        margin: 0 0;
-}
-@media (min-width: 800px) {
-
-    .slider-box{
-        h1 {
-            font-size: 3rem;
-            margin: 0;
-            color: #fff1f1;
-            font-weight: 700;
-        }
-        h2 {
-            color: #fff1f1;
-            font-size: 1.5rem;
-            letter-spacing: 0.3rem;
-            opacity: 0.6;
-        }
-        h3 {
-            color: #fff1f1;
-            font-size: 1.5rem;
-            letter-spacing: 0.3rem;
-            opacity: 0.6;
-        }
-    }
-
-	.et-hero-tabs{
-        max-height: 120vh;
-        height: 120vh;
-    }
-
-	.et-slide {
-        min-height: 100vh;
-
-        h1 {
-            font-size: 5rem;
-        }
-        h3 {
-            font-size: 1rem;
-        }
-	}
-	.et-hero-tab {
-		font-size: 1rem;
-	}
-    .generic-mobile-card{
-        margin: 0 25px;
-    }
-}
-</style> -->
