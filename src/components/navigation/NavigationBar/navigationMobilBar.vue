@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-app-bar class="pa-0" style="background-color: #f4f4f4;" scroll-behavior="hide">
+    <v-app-bar class="gris-paleta-background pa-0"  scroll-behavior="hide">
       <div class="d-flex flex-column  w-100">
         <div class="d-flex justify-center align-center">
           <v-app-bar-nav-icon
@@ -40,6 +40,7 @@
               >
             </ul>
           </div>
+
           <v-btn
             class="primary-color"
             variant="text"
@@ -70,8 +71,7 @@
       v-model="search"
       location="top"
       temporary
-      class="primary-font"
-      style="background-color: #f4f4f4;"
+      class="primary-font gris-paleta-background"
       :width="100">
       <div class="search-drawer">
         <v-text-field
@@ -129,6 +129,10 @@
 </script>
 
 <style lang="scss" scoped>
+$primary-color-text: $morado-semi-claro-paleta;
+$secondary-color-text: rgba($morado-oscuro-paleta, 0.7);
+$primary-color-background: $gris-paleta;
+
   .search-drawer{
     display: flex;
     flex-flow: column nowrap;
@@ -136,7 +140,7 @@
 
   }
   .primary-color{
-    color: #34495e;
+    color: $primary-color-text;
   }
       .mobile-display{
         display: none;
@@ -154,7 +158,7 @@
         h2,
         h3,
         a {
-        	color: #34495e;
+        	color: $primary-color-text;
         }
 
         a {
@@ -174,12 +178,12 @@
         	text-align: center;
         }
         .main-nav a {
-        	color: #34495e;
+        	color: $primary-color-text;
         	font-size: .99em;
         }
 
         .main-nav a:hover {
-        	color: #718daa;
+        	color: $secondary-color-text;
         }
 
 

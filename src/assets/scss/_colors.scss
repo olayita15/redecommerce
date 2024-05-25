@@ -1,3 +1,48 @@
-$primary: #ffa;
-$secondary: #f5a;
-$bg-dark: #120;
+// Primer paleta de colores
+$blanco-paleta: #e7eed0;
+$gris-paleta: #cad1c3;
+$morado-claro-paleta: #948e99;
+$morado-semi-claro-paleta: #51425f;
+$morado-oscuro-paleta: #2e1437;
+
+// Clases de fondo
+.blanco-paleta-background {
+    background-color: $blanco-paleta !important;
+  }
+  
+  .gris-paleta-background {
+    background-color: $gris-paleta !important;
+  }
+  
+  .morado-claro-paleta-background {
+    background-color: $morado-claro-paleta !important;
+  }
+  
+  .morado-semi-claro-paleta-background {
+    background-color: $morado-semi-claro-paleta !important;
+  }
+  
+  .morado-oscuro-paleta-background {
+    background-color: $morado-oscuro-paleta !important;
+  }
+  
+  // Clases de texto
+  .blanco-paleta-text {
+    color: $blanco-paleta !important;
+  }
+  
+  .gris-paleta-text {
+    color: $gris-paleta !important;
+  }
+  
+  .morado-claro-paleta-text {
+    color: $morado-claro-paleta !important;
+  }
+  
+  .morado-semi-claro-paleta-text {
+    color: $morado-semi-claro-paleta !important;
+  }
+  
+  .morado-oscuro-paleta-text {
+    color: $morado-oscuro-paleta !important;
+  }

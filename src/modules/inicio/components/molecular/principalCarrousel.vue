@@ -46,6 +46,15 @@
 </script>
 
 <style lang="scss" scoped>
+  $primary-color-text: $morado-oscuro-paleta;
+  $secondary-color-text: $morado-semi-claro-paleta;
+  $third-color-text: $morado-claro-paleta;
+  $primary-color-background: $gris-paleta;
+  $secondary-color-background: $blanco-paleta;
+  
+  .title-font{
+    color: $secondary-color-text;
+  }
   .carousel-box {
     background-size:contain;
     background-position: center;

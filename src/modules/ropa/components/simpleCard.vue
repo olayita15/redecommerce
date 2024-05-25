@@ -109,6 +109,12 @@
 </script>
 
 <style lang="scss" scoped>
+  $primary-color-text: $morado-oscuro-paleta;
+  $secondary-color-text: $morado-semi-claro-paleta;
+  $third-color-text: $morado-claro-paleta;
+  $primary-color-background: $gris-paleta;
+  $secondary-color-background: $blanco-paleta;
+
   $relative_width: 250px;
   $relative_height: $relative_width + 50px;
 
@@ -123,6 +129,7 @@
   .title-font{
     font-size: medium;
     text-wrap: nowrap;
+    color: $primary-color-text;
   }
   .title-position{
     align-self: flex-start;
@@ -130,6 +137,7 @@
   .author-font{
     font-size: small;
     text-wrap: nowrap;
+    color: $secondary-color-text;
   }
   .author-position{
     align-self: flex-start;
@@ -139,13 +147,13 @@
     align-self: flex-start;
     z-index: -1;
     .product-price {
-      background: #042c38fa;
+      background: $primary-color-text;
       padding: 0 10px;
       text-align: center;
       display: inline-block;
       font-size: 23px;
       font-weight: 200;
-      color: #fff;
+      color: $secondary-color-background;
       border-radius: 7px;
       // box-shadow: -10px 20px 15px -10px rgba(17, 233, 91, 0.3);
       .product-price-label{
@@ -162,13 +170,13 @@
     align-self: flex-end;
     margin-bottom: -5px;
     .product-price {
-      background: #38042be3;
+      background: $primary-color-background;
       padding: 0 7px;
       text-align: center;
       display: inline-block;
       font-size: 20px;
       font-weight: 100;
-      color: #fff;
+      color: $secondary-color-text;
       border-radius: 7px;
       // box-shadow: -10px 20px 15px -10px rgba(17, 233, 91, 0.3);
       z-index: 0;
